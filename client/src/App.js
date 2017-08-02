@@ -3,7 +3,6 @@ import ReactDom from "react-dom";
 import WebFont from "webfontloader";
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
-
 const axios = require("axios");
 
 WebFont.load({
