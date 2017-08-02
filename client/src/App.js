@@ -9,14 +9,17 @@ WebFont.load({
   google: {
     families: ["Oswald", "sans-serif"]
   }
+
 });
+//  Math.random().toString(36).substr(2, 10)
 
 class App extends React.Component {
+
   render() {
     return (
       <BrowserRouter>
         <div>
-          <AppRoutes />
+          <AppRoutes/>
         </div>
       </BrowserRouter>
     );

@@ -11992,7 +11992,9 @@ _webfontloader2.default.load({
   google: {
     families: ["Oswald", "sans-serif"]
   }
+
 });
+//  Math.random().toString(36).substr(2, 10)
 
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
@@ -26495,6 +26497,10 @@ var _FinalProject = __webpack_require__(233);
 
 var _FinalProject2 = _interopRequireDefault(_FinalProject);
 
+var _VideoChat = __webpack_require__(362);
+
+var _VideoChat2 = _interopRequireDefault(_VideoChat);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AppRoutes = function AppRoutes(props) {
@@ -26504,7 +26510,8 @@ var AppRoutes = function AppRoutes(props) {
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
-      _react2.default.createElement(_reactRouterDom.Route, { name: "home", exact: true, path: "/", component: _FinalProject2.default })
+      _react2.default.createElement(_reactRouterDom.Route, { name: "home", exact: true, path: "/", component: _FinalProject2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { name: "room", exact: true, path: "/room", component: _VideoChat2.default })
     )
   );
 };
@@ -26550,35 +26557,21 @@ var WoWApp = function (_React$Component) {
   }
 
   _createClass(WoWApp, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var webrtc = new _simplewebrtc2.default({
-        // the id/element dom element that will hold "our" video
-        localVideoEl: 'localVideo',
-        // the id/element dom element that will hold remote videos
-        remoteVideosEl: 'remoteVideos',
-        // immediately ask for camera access
-        autoRequestMedia: true
-      });
-      // we have to wait until it's ready
-      webrtc.on('readyToCall', function () {
-        // you can name it anything
-        webrtc.joinRoom('your awesome room name');
-      });
-    }
-  }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'div',
+        "div",
         null,
         _react2.default.createElement(
-          'h1',
+          "h1",
           null,
-          'Final Project: Test'
+          "Final Project"
         ),
-        _react2.default.createElement('video', { id: 'localVideo' }),
-        _react2.default.createElement('div', { id: 'remoteVideos' })
+        _react2.default.createElement(
+          "a",
+          { href: "/room" },
+          "Rooom"
+        )
       );
     }
   }]);
@@ -40955,6 +40948,88 @@ exports.length = function(obj){
 exports.isEmpty = function(obj){
   return 0 == exports.length(obj);
 };
+
+/***/ }),
+/* 362 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _simplewebrtc = __webpack_require__(320);
+
+var _simplewebrtc2 = _interopRequireDefault(_simplewebrtc);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VideoChat = function (_React$Component) {
+  _inherits(VideoChat, _React$Component);
+
+  function VideoChat(props) {
+    _classCallCheck(this, VideoChat);
+
+    return _possibleConstructorReturn(this, (VideoChat.__proto__ || Object.getPrototypeOf(VideoChat)).call(this, props));
+  }
+
+  _createClass(VideoChat, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var webrtc = new _simplewebrtc2.default({
+        // the id/element dom element that will hold "our" video
+        localVideoEl: 'localVideo',
+        // the id/element dom element that will hold remote videos
+        remoteVideosEl: 'remoteVideos',
+        // immediately ask for camera access
+        autoRequestMedia: true
+      });
+      // we have to wait until it's ready
+      webrtc.on('readyToCall', function () {
+        // you can name it anything
+        webrtc.joinRoom('your awesome room name');
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Initiator'
+        ),
+        _react2.default.createElement('video', { id: 'localVideo' }),
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Guest'
+        ),
+        _react2.default.createElement('div', { id: 'remoteVideos' })
+      );
+    }
+  }]);
+
+  return VideoChat;
+}(_react2.default.Component);
+
+exports.default = VideoChat;
 
 /***/ })
 /******/ ]);
