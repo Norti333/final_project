@@ -8,10 +8,15 @@ class WoWApp extends React.Component {
   render() {
     return (
       <div>
-        <h1>Final Project</h1>
+        <h1>Welcome to Oraculi!!!</h1>
+        <a href='/User'><button className="btn btn-default">User</button></a>
+        <a href='/Mentor'><button className="btn btn-default">Mentor</button></a>
       </div>
+
     );
   }
 }
 
 export default WoWApp;
+
+
