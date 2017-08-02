@@ -7,6 +7,7 @@ const AppRoutes = props => {
     <div className="container">
       <Switch>
         <Route name="home" exact path="/" component={FinalProject} />
+        
       </Switch>
     </div>
   );

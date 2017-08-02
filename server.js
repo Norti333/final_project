@@ -5,6 +5,11 @@ const mongoose = require("mongoose");
 const path = require("path");
 const passport = require("./server/models/Passport");
 const authRouting = require("./server/routing/authRouting.js");
+const os = require('os');
+const nodeStatic = require('node-static');
+const socketIO = require('socket.io');
+const http = require('http');
+const fileServer = new(nodeStatic.Server)();
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
@@ -13,9 +18,7 @@ mongoose.connect(
     useMongoClient: true
   }
 );
-
 const app = express();
-
 app.use(express.static("./server/static/"));
 app.use(express.static("./client/dist/"));
 app.use(bodyParser.json());
@@ -42,9 +45,5 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./server/static/index.html"));
 });
 
-//* Start the Server
-app.listen(3000, () => {
-  console.log(
-    "Server is running on http://localhost:3000 or http://127.0.0.1:3000"
-  );
-});
+var server = app.listen(3000)
+
