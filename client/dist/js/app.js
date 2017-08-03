@@ -26555,6 +26555,12 @@ var WoWApp = function (_React$Component) {
           "h1",
           null,
           "Final Project"
+        ),
+        _react2.default.createElement(
+          "div",
+          { id: "videos" },
+          _react2.default.createElement("div", { id: "subscriber" }),
+          _react2.default.createElement("div", { id: "publisher" })
         )
       );
     }
