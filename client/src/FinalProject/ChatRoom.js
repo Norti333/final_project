@@ -60,9 +60,11 @@ class ChatRoom extends React.Component {
 
   render() {
     return (
-      <div>
-        <Form connectToSession={this.connectToSession} />
-        <div id="videos">
+      <div className="row">
+        <div className="col-lg-6">
+          <Form connectToSession={this.connectToSession} />
+        </div>
+        <div className="col-lg-12" id="videos">
           <div id="subscriber" />
           <div id="publisher" />
         </div>

@@ -6,7 +6,6 @@ import Login from "./Login";
 import Page404 from "./FinalProject/common/404";
 import User from "./FinalProject/User";
 import Mentor from "./FinalProject/Mentor";
-import ChatRoom from "./FinalProject/ChatRoom";
 
 const AppRoutes = props => {
   return (
@@ -17,7 +16,6 @@ const AppRoutes = props => {
         <Route name="login" exact path="/login" render={routesProps => <Login {...routesProps} {...props} />}  />
         <Route name="user" exact path="/User" component={User} />
         <Route name="mentor" exact path="/Mentor" component={Mentor} />
-        <Route name="ChatRoom" exact path="/ChatRoom" component={ChatRoom} />
       </Switch>
     </div>
   );

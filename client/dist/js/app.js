@@ -7801,11 +7801,15 @@ var ChatRoom = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         "div",
-        null,
-        _react2.default.createElement(_form2.default, { connectToSession: this.connectToSession }),
+        { className: "row" },
         _react2.default.createElement(
           "div",
-          { id: "videos" },
+          { className: "col-lg-6" },
+          _react2.default.createElement(_form2.default, { connectToSession: this.connectToSession })
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "col-lg-12", id: "videos" },
           _react2.default.createElement("div", { id: "subscriber" }),
           _react2.default.createElement("div", { id: "publisher" })
         )
@@ -26830,10 +26834,6 @@ var _Mentor = __webpack_require__(260);
 
 var _Mentor2 = _interopRequireDefault(_Mentor);
 
-var _ChatRoom = __webpack_require__(64);
-
-var _ChatRoom2 = _interopRequireDefault(_ChatRoom);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AppRoutes = function AppRoutes(props) {
@@ -26853,8 +26853,7 @@ var AppRoutes = function AppRoutes(props) {
           return _react2.default.createElement(_Login2.default, _extends({}, routesProps, props));
         } }),
       _react2.default.createElement(_reactRouterDom.Route, { name: "user", exact: true, path: "/User", component: _User2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { name: "mentor", exact: true, path: "/Mentor", component: _Mentor2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { name: "ChatRoom", exact: true, path: "/ChatRoom", component: _ChatRoom2.default })
+      _react2.default.createElement(_reactRouterDom.Route, { name: "mentor", exact: true, path: "/Mentor", component: _Mentor2.default })
     )
   );
 };
