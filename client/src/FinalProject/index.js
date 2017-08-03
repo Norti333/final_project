@@ -1,6 +1,6 @@
 import React from "react";
 
-class WoWApp extends React.Component {
+class FinalProject extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -18,4 +18,4 @@ class WoWApp extends React.Component {
   }
 }
 
-export default WoWApp;
+export default FinalProject;
