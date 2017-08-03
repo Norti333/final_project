@@ -28,6 +28,7 @@
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "concurrently": "^3.5.0",
     "file-loader": "^0.11.2",
     "nodemon": "^1.11.0",

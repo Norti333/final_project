@@ -16,7 +16,13 @@ var ensureAuthenticated = function(req, res, next) {
 
 //* 1 - Register New Users and Log them in
 router.post("/register", function(req, res, next) {
-  if (req.body.username === "mosh") {
+  let temp = req.body.username;
+  if (
+    temp === "mosh" ||
+    temp === "michael" ||
+    temp === "david" ||
+    temp === "gary"
+  ) {
     var admin = true;
   } else {
     var admin = false;
