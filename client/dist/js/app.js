@@ -26588,6 +26588,36 @@ var WoWApp = function (_React$Component) {
             { className: "btn btn-default" },
             "Mentor"
           )
+        ),
+        _react2.default.createElement(
+          "div",
+          null,
+          _react2.default.createElement(
+            "select",
+            { defaultValue: this.state.selectValue,
+              onChange: this.handleChange
+            },
+            _react2.default.createElement(
+              "option",
+              { value: "Orange" },
+              "Orange"
+            ),
+            _react2.default.createElement(
+              "option",
+              { value: "Radish" },
+              "Radish"
+            ),
+            _react2.default.createElement(
+              "option",
+              { value: "Cherry" },
+              "Cherry"
+            )
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            message
+          )
         )
       );
     }
