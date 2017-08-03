@@ -13,6 +13,14 @@ class ChatRoom extends React.Component {
   }
 
   connectToSession(data) {
+    if (this.state.mySession) {
+      let session = this.state.mySession;
+      let publisher = this.state.myPublisher;
+      session.unpublish(publisher);
+      this.setState({ mySession: null, myPublisher: null });
+      alert("you have left the chat");
+    }
+
     let session = OT.initSession(data.apiKey, data.sessionId);
     let publisher = OT.initPublisher("publisher");
 
@@ -43,7 +51,6 @@ class ChatRoom extends React.Component {
       let session = this.state.mySession;
       let publisher = this.state.myPublisher;
       session.unpublish(publisher);
-      // session.disconnect();
       this.setState({ mySession: null, myPublisher: null });
       alert("you have left the chat");
     }
@@ -52,11 +59,11 @@ class ChatRoom extends React.Component {
   render() {
     return (
       <div>
+        <Form connectToSession={this.connectToSession} />
         <div id="videos">
           <div id="subscriber" />
           <div id="publisher" />
         </div>
-        <Form connectToSession={this.connectToSession} />
       </div>
     );
   }

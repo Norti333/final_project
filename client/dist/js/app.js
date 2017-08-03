@@ -7751,6 +7751,14 @@ var ChatRoom = function (_React$Component) {
   _createClass(ChatRoom, [{
     key: "connectToSession",
     value: function connectToSession(data) {
+      if (this.state.mySession) {
+        var _session = this.state.mySession;
+        var _publisher = this.state.myPublisher;
+        _session.unpublish(_publisher);
+        this.setState({ mySession: null, myPublisher: null });
+        alert("you have left the chat");
+      }
+
       var session = OT.initSession(data.apiKey, data.sessionId);
       var publisher = OT.initPublisher("publisher");
 
@@ -7782,7 +7790,6 @@ var ChatRoom = function (_React$Component) {
         var session = this.state.mySession;
         var publisher = this.state.myPublisher;
         session.unpublish(publisher);
-        // session.disconnect();
         this.setState({ mySession: null, myPublisher: null });
         alert("you have left the chat");
       }
@@ -7793,13 +7800,13 @@ var ChatRoom = function (_React$Component) {
       return _react2.default.createElement(
         "div",
         null,
+        _react2.default.createElement(_form2.default, { connectToSession: this.connectToSession }),
         _react2.default.createElement(
           "div",
           { id: "videos" },
           _react2.default.createElement("div", { id: "subscriber" }),
           _react2.default.createElement("div", { id: "publisher" })
-        ),
-        _react2.default.createElement(_form2.default, { connectToSession: this.connectToSession })
+        )
       );
     }
   }]);
