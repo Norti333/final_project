@@ -1,7 +1,7 @@
 import React from "react";
 import { browserHistory } from "react-router";
 import { Redirect } from "react-router-dom";
-// import RegisterForm from "./RegisterForm.js";
+
 const axios = require("axios");
 
 class Register extends React.Component {
@@ -15,7 +15,6 @@ class Register extends React.Component {
       redirect: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.onChange = this.onChange.bind(this);
   }
 
   handleSubmit(event) {
@@ -34,15 +33,11 @@ class Register extends React.Component {
       })
       .catch(function(error) {});
   }
-
-  //   onRegisterSubmitForm() {}
-
   render() {
     let redirect = this.state.redirect;
     if (redirect) {
       return <Redirect to="/" />;
     } else {
-      // return <RegisterForm user={this.state.currentUser} onSubmitSearchForm={this.onRegisterSubmitForm} onChange={this.onChange} />;
       return (
         <form action="#" id="getRegisterForm" onSubmit={this.handleSubmit}>
           <h3>Register</h3>

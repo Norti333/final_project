@@ -1,13 +1,14 @@
 nav li {
   cursor: pointer;
 }
-.navbar-text{
-  margin-top:0px;
+
+.navbar-text {
+  margin-top: 0px;
   margin-bottom: 10px;
 }
 
-.userp{
-  padding-top:15px;
+.userp {
+  padding-top: 15px;
 }
 
 #videos {

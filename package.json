@@ -14,6 +14,7 @@
     "express-session": "^1.15.4",
     "mongoose": "^4.11.4",
     "nodemon": "^1.11.0",
+    "opentok": "^2.6.0",
     "passport": "^0.3.2",
     "passport-local-mongoose": "^4.0.0",
     "react": "^15.6.1",

@@ -1,11 +1,11 @@
 import React from "react";
-import {Link}from "react-router-dom"
+import { Link } from "react-router-dom";
 import Form from "./form";
 
 class ChatRoom extends React.Component {
-    constructor(props) {
-        super(props);
-    
+  constructor(props) {
+    super(props);
+
     this.connectToSession = this.connectToSession.bind(this);
   }
 
@@ -33,17 +33,17 @@ class ChatRoom extends React.Component {
     });
   }
 
-    render() {
-        return (
-            <div>
-         <div id="videos">
+  render() {
+    return (
+      <div>
+        <div id="videos">
           <div id="subscriber" />
           <div id="publisher" />
         </div>
-                <Form connectToSession={this.connectToSession} />
-            </div>
-        );
-    }
+        <Form connectToSession={this.connectToSession} />
+      </div>
+    );
+  }
 }
 
 export default ChatRoom;
