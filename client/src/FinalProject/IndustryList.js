@@ -1,50 +1,25 @@
 import React from "react";
-import User from "./User";
 
-let ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
-
-class DropDown extends React.Component {
+class Mentor extends React.Component {
     constructor(props) {
         super(props);
-        this.toggleMenu = this.toggleMenu.bind(this);
-        this.state = {
-            menuActive: false
-        };
-    }
-
-    toggleMenu() {
-        let menuState = !this.state.menuActive;
-        this.setState({
-            menuActive: menuState
-        });
     }
 
     render() {
-        let menu;
-        if (this.state.menuActive) {
-            menu = <div>
-                <ul>
-                    <li>First Item </li>
-                    <li>Second Item </li>
-                    <li>Third Item </li>
-                </ul>
-            </div>
-        } else {
-            menu = "";
-        }
         return (
-            <div id="menu">
-                <i className="fa fa-plus" onClick={this.toggleMenu} />
-                <ReactCSSTransitionGroup transitionName="menu" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
-                    {menu}
-                </ReactCSSTransitionGroup>
-            </div>
-        )
-    }
-}
+            createSelectItems() {
+            let items = [];
+            for (let i = 0; i <= this.props.maxValue; i++) {
+                items.push(<option key={i} value={i}>{i}</option>);
+                //here I will be creating my options dynamically based on
+                //what props are currently passed to the parent component
+            }
+            return items;
+        }
 
-ReactDOM.render(
-    <DropDown />,
-    document.getElementById('menuContainer')
-);
-export default IndustryList;
+        onDropdownSelected(e) {
+            console.log("THE VAL", e.target.value);
+            //here you will see the current selected value of the select input
+        }
+
+        export default Mentor;
