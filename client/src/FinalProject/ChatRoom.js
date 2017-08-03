@@ -5,12 +5,17 @@ import Form from "./form";
 class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
-
     this.connectToSession = this.connectToSession.bind(this);
+    this.state = {
+      mySession: ""
+    };
   }
 
   connectToSession(data) {
     let session = OT.initSession(data.apiKey, data.sessionId);
+
+    this.setState({ mySession: session });
+
     let publisher = OT.initPublisher("publisher");
 
     session.on({
@@ -31,6 +36,12 @@ class ChatRoom extends React.Component {
         console.log("Connected to the Session.");
       }
     });
+  }
+
+  componentWillUnmount() {
+    let session = this.state.mySession;
+    session.disconnect();
+    alert("you have left the chat");
   }
 
   render() {

@@ -7741,6 +7741,9 @@ var ChatRoom = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (ChatRoom.__proto__ || Object.getPrototypeOf(ChatRoom)).call(this, props));
 
     _this.connectToSession = _this.connectToSession.bind(_this);
+    _this.state = {
+      mySession: ""
+    };
     return _this;
   }
 
@@ -7748,6 +7751,9 @@ var ChatRoom = function (_React$Component) {
     key: "connectToSession",
     value: function connectToSession(data) {
       var session = OT.initSession(data.apiKey, data.sessionId);
+
+      this.setState({ mySession: session });
+
       var publisher = OT.initPublisher("publisher");
 
       session.on({
@@ -7768,6 +7774,13 @@ var ChatRoom = function (_React$Component) {
           console.log("Connected to the Session.");
         }
       });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      var session = this.state.mySession;
+      session.disconnect();
+      alert("you have left the chat");
     }
   }, {
     key: "render",
@@ -28085,7 +28098,7 @@ exports.default = Page404;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -28109,31 +28122,31 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var User = function (_React$Component) {
-    _inherits(User, _React$Component);
+  _inherits(User, _React$Component);
 
-    function User(props) {
-        _classCallCheck(this, User);
+  function User(props) {
+    _classCallCheck(this, User);
 
-        return _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
+    return _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
+  }
+
+  _createClass(User, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "h1",
+          null,
+          "Welcome User"
+        ),
+        _react2.default.createElement(_ChatRoom2.default, null)
+      );
     }
+  }]);
 
-    _createClass(User, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement(
-                    "h1",
-                    null,
-                    "Welcome User"
-                ),
-                _react2.default.createElement(_ChatRoom2.default, null)
-            );
-        }
-    }]);
-
-    return User;
+  return User;
 }(_react2.default.Component);
 
 exports.default = User;
