@@ -7,7 +7,7 @@ class ChatRoom extends React.Component {
     super(props);
     this.connectToSession = this.connectToSession.bind(this);
     this.state = {
-      mySession: ""
+      mySession: null
     };
   }
 
@@ -39,9 +39,12 @@ class ChatRoom extends React.Component {
   }
 
   componentWillUnmount() {
-    let session = this.state.mySession;
-    session.disconnect();
-    alert("you have left the chat");
+    if (this.state.mySession) {
+      let session = this.state.mySession;
+      session.disconnect();
+      this.setState({ mySession: null });
+      alert("you have left the chat");
+    }
   }
 
   render() {

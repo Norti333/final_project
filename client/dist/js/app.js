@@ -7742,7 +7742,7 @@ var ChatRoom = function (_React$Component) {
 
     _this.connectToSession = _this.connectToSession.bind(_this);
     _this.state = {
-      mySession: ""
+      mySession: null
     };
     return _this;
   }
@@ -7778,9 +7778,12 @@ var ChatRoom = function (_React$Component) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      var session = this.state.mySession;
-      session.disconnect();
-      alert("you have left the chat");
+      if (this.state.mySession) {
+        var session = this.state.mySession;
+        session.disconnect();
+        this.setState({ mySession: null });
+        alert("you have left the chat");
+      }
     }
   }, {
     key: "render",
