@@ -7,16 +7,16 @@ class ChatRoom extends React.Component {
     super(props);
     this.connectToSession = this.connectToSession.bind(this);
     this.state = {
-      mySession: null
+      mySession: null,
+      myPublisher: null
     };
   }
 
   connectToSession(data) {
     let session = OT.initSession(data.apiKey, data.sessionId);
-
-    this.setState({ mySession: session });
-
     let publisher = OT.initPublisher("publisher");
+
+    this.setState({ mySession: session, myPublisher: publisher });
 
     session.on({
       sessionConnected: function(event) {
@@ -41,8 +41,10 @@ class ChatRoom extends React.Component {
   componentWillUnmount() {
     if (this.state.mySession) {
       let session = this.state.mySession;
-      session.disconnect();
-      this.setState({ mySession: null });
+      let publisher = this.state.myPublisher;
+      session.unpublish(publisher);
+      // session.disconnect();
+      this.setState({ mySession: null, myPublisher: null });
       alert("you have left the chat");
     }
   }

@@ -7742,7 +7742,8 @@ var ChatRoom = function (_React$Component) {
 
     _this.connectToSession = _this.connectToSession.bind(_this);
     _this.state = {
-      mySession: null
+      mySession: null,
+      myPublisher: null
     };
     return _this;
   }
@@ -7751,10 +7752,9 @@ var ChatRoom = function (_React$Component) {
     key: "connectToSession",
     value: function connectToSession(data) {
       var session = OT.initSession(data.apiKey, data.sessionId);
-
-      this.setState({ mySession: session });
-
       var publisher = OT.initPublisher("publisher");
+
+      this.setState({ mySession: session, myPublisher: publisher });
 
       session.on({
         sessionConnected: function sessionConnected(event) {
@@ -7780,8 +7780,10 @@ var ChatRoom = function (_React$Component) {
     value: function componentWillUnmount() {
       if (this.state.mySession) {
         var session = this.state.mySession;
-        session.disconnect();
-        this.setState({ mySession: null });
+        var publisher = this.state.myPublisher;
+        session.unpublish(publisher);
+        // session.disconnect();
+        this.setState({ mySession: null, myPublisher: null });
         alert("you have left the chat");
       }
     }
