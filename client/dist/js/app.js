@@ -7755,6 +7755,7 @@ var ChatRoom = function (_React$Component) {
         var _session = this.state.mySession;
         var _publisher = this.state.myPublisher;
         _session.unpublish(_publisher);
+        _session.disconnect();
         this.setState({ mySession: null, myPublisher: null });
         alert("you have left the chat");
       }
@@ -7790,6 +7791,7 @@ var ChatRoom = function (_React$Component) {
         var session = this.state.mySession;
         var publisher = this.state.myPublisher;
         session.unpublish(publisher);
+        session.disconnect();
         this.setState({ mySession: null, myPublisher: null });
         alert("you have left the chat");
       }
