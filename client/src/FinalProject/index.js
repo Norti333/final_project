@@ -9,6 +9,10 @@ class WoWApp extends React.Component {
     return (
       <div>
         <h1>Final Project</h1>
+        <div id="videos">
+          <div id="subscriber" />
+          <div id="publisher" />
+        </div>
       </div>
     );
   }
