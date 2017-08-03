@@ -29,6 +29,7 @@ class ChatRoom extends React.Component {
     session.on({
       sessionConnected: function(event) {
         session.publish(publisher);
+        session.disconnect();
       },
       streamCreated: function(event) {
         let subContainer = document.createElement("div");
@@ -51,6 +52,7 @@ class ChatRoom extends React.Component {
       let session = this.state.mySession;
       let publisher = this.state.myPublisher;
       session.unpublish(publisher);
+      session.disconnect();
       this.setState({ mySession: null, myPublisher: null });
       alert("you have left the chat");
     }
