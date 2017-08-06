@@ -1,7 +1,8 @@
 import React from "react";
+import ChatRoom from "./ChatRoom";
 import { Link } from "react-router-dom";
 
-class FinalProject extends React.Component {
+class MenteeSession extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -9,15 +10,10 @@ class FinalProject extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome to Oraculi!!!</h1>
+        <h1>Upcoming Sessions:</h1>
         <Link to="/Mentee">
           <button type="button" className="btn btn-default">
-            Mentee
-          </button>
-        </Link>
-        <Link to="/Mentor">
-          <button type="button" className="btn btn-default">
-            Mentor
+            Go Back.
           </button>
         </Link>
       </div>
@@ -25,4 +21,4 @@ class FinalProject extends React.Component {
   }
 }
 
-export default FinalProject;
+export default MenteeSession;

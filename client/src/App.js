@@ -9,7 +9,7 @@ const axios = require("axios");
 
 WebFont.load({
   google: {
-    families: ["Oswald", "sans-serif"]
+    families: ["Oswald", "Pacifico", "sans-serif"]
   }
 });
 

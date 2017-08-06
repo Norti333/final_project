@@ -30,7 +30,7 @@ router.post("/register", function(req, res, next) {
   User.register(
     new User({
       username: req.body.username,
-      admin: admin
+      admin: admin,
     }),
     req.body.password,
     function(err, user) {
