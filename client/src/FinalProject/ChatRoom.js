@@ -23,6 +23,7 @@ class ChatRoom extends React.Component {
     }
 
     let session = OT.initSession(data.apiKey, data.sessionId);
+    this.setState({mySessiion:session});
     let publisher = OT.initPublisher("publisher");
 
     this.setState({ mySession: session, myPublisher: publisher });
@@ -46,6 +47,11 @@ class ChatRoom extends React.Component {
       }
     });
   }
+    componentWillUnmount() {
+        let session = this.state.mySessiion;
+        session.disconnect();
+        alert("you have left the chat");
+    }
 
   componentWillUnmount() {
     if (this.state.mySession) {

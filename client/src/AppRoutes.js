@@ -9,7 +9,7 @@ import Mentor from "./FinalProject/Mentor";
 
 const AppRoutes = props => {
   return (
-    <div className="container">
+    <div className="container-fluid">
       <Switch>
         <Route name="home" exact path="/" render={routesProps => <FinalProject {...routesProps} user={props.user} />}/>
         <Route name="register" exact path="/register" render={routesProps => <Register {...routesProps} {...props} />}/>
