@@ -1,5 +1,5 @@
 import React from "react";
-import {Link}from "react-router-dom"
+import { Link } from "react-router-dom"
 import Home from "./home"
 
 class FinalProject extends React.Component {
@@ -9,7 +9,7 @@ class FinalProject extends React.Component {
 
   render() {
     return (
-        <Home/>
+      <Home />
     );
   }
 }
