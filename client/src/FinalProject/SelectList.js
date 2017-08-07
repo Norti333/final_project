@@ -1,7 +1,6 @@
 import React from 'react';
 import Options from "./Options"
 const SelectList = (props) => {
-    console.log(props)
     const boxes = props
         .Professions
         .map((item, index) => <Options
@@ -9,7 +8,7 @@ const SelectList = (props) => {
             item={item} />)
     return (
         <div>
-            <select>
+            <select onChange={props.change}>
                 {boxes}
             </select>
         </div>

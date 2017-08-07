@@ -26842,6 +26842,10 @@ var _Mentor = __webpack_require__(266);
 
 var _Mentor2 = _interopRequireDefault(_Mentor);
 
+var _ChooseMentor = __webpack_require__(269);
+
+var _ChooseMentor2 = _interopRequireDefault(_ChooseMentor);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AppRoutes = function AppRoutes(props) {
@@ -26861,7 +26865,8 @@ var AppRoutes = function AppRoutes(props) {
           return _react2.default.createElement(_Login2.default, _extends({}, routesProps, props));
         } }),
       _react2.default.createElement(_reactRouterDom.Route, { name: "user", exact: true, path: "/User", component: _User2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { name: "mentor", exact: true, path: "/Mentor", component: _Mentor2.default })
+      _react2.default.createElement(_reactRouterDom.Route, { name: "mentor", exact: true, path: "/Mentor", component: _Mentor2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { name: "ChooseMentor", exact: true, path: "/User/ChooseMentor", component: _ChooseMentor2.default })
     )
   );
 };
@@ -28671,10 +28676,6 @@ var _ChatRoom = __webpack_require__(104);
 
 var _ChatRoom2 = _interopRequireDefault(_ChatRoom);
 
-var _SelectList = __webpack_require__(267);
-
-var _SelectList2 = _interopRequireDefault(_SelectList);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28689,12 +28690,7 @@ var User = function (_React$Component) {
   function User(props) {
     _classCallCheck(this, User);
 
-    var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
-
-    _this.state = {
-      Professions: [{ name: "Front End Web Developer", Mentors: [] }, { name: "Back End Web Developer", Mentors: [] }, { name: "Full Stack Web Developer", Mentors: [] }, { name: "Big Data", Mentors: [] }, { name: "Cyber Security", Mentors: [] }]
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
   }
 
   _createClass(User, [{
@@ -28713,7 +28709,15 @@ var User = function (_React$Component) {
           null,
           "Choose Industry"
         ),
-        _react2.default.createElement(_SelectList2.default, { Professions: this.state.Professions }),
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: "/User/ChooseMentor" },
+          _react2.default.createElement(
+            "button",
+            null,
+            "Choose Mentor"
+          )
+        ),
         _react2.default.createElement(
           "h3",
           null,
@@ -28938,7 +28942,6 @@ var _Options2 = _interopRequireDefault(_Options);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SelectList = function SelectList(props) {
-    console.log(props);
     var boxes = props.Professions.map(function (item, index) {
         return _react2.default.createElement(_Options2.default, {
             key: index,
@@ -28949,7 +28952,7 @@ var SelectList = function SelectList(props) {
         null,
         _react2.default.createElement(
             "select",
-            null,
+            { onChange: props.change },
             boxes
         )
     );
@@ -29012,6 +29015,78 @@ var Options = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Options;
+
+/***/ }),
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _SelectList = __webpack_require__(267);
+
+var _SelectList2 = _interopRequireDefault(_SelectList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ChooseMentor = function (_React$Component) {
+    _inherits(ChooseMentor, _React$Component);
+
+    function ChooseMentor(props) {
+        _classCallCheck(this, ChooseMentor);
+
+        var _this = _possibleConstructorReturn(this, (ChooseMentor.__proto__ || Object.getPrototypeOf(ChooseMentor)).call(this, props));
+
+        _this.state = {
+            Professions: [{ name: "Front End Web Developer", Mentors: [] }, { name: "Back End Web Developer", Mentors: [] }, { name: "Full Stack Web Developer", Mentors: [] }, { name: "Big Data", Mentors: [] }, { name: "Cyber Security", Mentors: [] }],
+            value: ''
+        };
+        _this.change = _this.change.bind(_this);
+        return _this;
+    }
+
+    _createClass(ChooseMentor, [{
+        key: "change",
+        value: function change(event) {
+            this.setState({ value: event.target.value });
+            console.log(this.state.value);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "h2",
+                    null,
+                    "Choose Mentor Industry"
+                ),
+                _react2.default.createElement(_SelectList2.default, { change: this.change, Professions: this.state.Professions })
+            );
+        }
+    }]);
+
+    return ChooseMentor;
+}(_react2.default.Component);
+
+exports.default = ChooseMentor;
 
 /***/ })
 /******/ ]);
