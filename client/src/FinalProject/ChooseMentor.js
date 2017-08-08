@@ -27,7 +27,7 @@ class ChooseMentor extends React.Component {
                 { name: "Full Stack Web Developer", Mentors: [] },
                 { name: "Big Data", Mentors: [] },
                 { name: "Cyber Security", Mentors: [] }
-            ], value: '', renderMe: []
+            ], value: '', mentors: []
         }
         this.change = this.change.bind(this)
         this.renderMentors = this.renderMentors.bind(this)
@@ -54,7 +54,7 @@ class ChooseMentor extends React.Component {
             <div id='mentor-page'>
                 <h2>Choose Mentor Industry</h2>
                 <SelectList change={this.change} Professions={this.state.Professions} />
-                <MentorListBoxes mentors={this.state.renderMe} />
+                <MentorListBoxes mentors={this.state.mentors} />
             </div>
         )
     }
