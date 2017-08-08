@@ -1674,6 +1674,9 @@ body.is-loading #header.alt .inner {
   margin-left: auto;
   margin-right: auto; */
 }
+.pick-mentor{
+	float: right;
+}
 
 #subscriber {
 	position: relative;
@@ -1693,6 +1696,9 @@ body.is-loading #header.alt .inner {
 	z-index: 100;
 	border: 3px solid white;
 	border-radius: 3px;
+}
+.media{
+	    box-shadow: 1px -1px 7px black;
 }
 
 html {
