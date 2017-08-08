@@ -52,8 +52,9 @@ class ChooseMentor extends React.Component {
     render() {
         return (
             <div id='mentor-page'>
-                <h2>Choose Mentor Industry</h2>
+                <h2>Choose Mentor's Industry</h2>
                 <SelectList change={this.change} Professions={this.state.Professions} />
+                <hr/>
                 <MentorListBoxes mentors={this.state.mentors} />
             </div>
         )
