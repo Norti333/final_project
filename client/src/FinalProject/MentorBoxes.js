@@ -5,14 +5,16 @@ class MentorBoxes extends React.Component {
         return (
             <div className="equalHMV eq">
                 <div className="media">
+                  <button type="button" className="btn btn-success pick-mentor">Pick this Mentor</button>
                     <div className="media-left">
                         <img src={this.props.item.img} alt={this.props.item.name} className="media-object" style={{ width: 60 }} /></div>
                     <div className="media-body">
                         <h4 className="media-heading">{this.props.item.name}</h4>
-                        <p>{this.props.item.text}- </p>
+                        <p>{this.props.item.text} </p>
                     </div>
                 </div>
             </div>
+           
         )
     }
 }

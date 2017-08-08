@@ -29012,9 +29012,10 @@ var ChooseMentor = function (_React$Component) {
                 _react2.default.createElement(
                     "h2",
                     null,
-                    "Choose Mentor Industry"
+                    "Choose Mentor's Industry"
                 ),
                 _react2.default.createElement(_SelectList2.default, { change: this.change, Professions: this.state.Professions }),
+                _react2.default.createElement("hr", null),
                 _react2.default.createElement(_MentorListBoxes2.default, { mentors: this.state.mentors })
             );
         }
@@ -29202,6 +29203,11 @@ var MentorBoxes = function (_React$Component) {
                     "div",
                     { className: "media" },
                     _react2.default.createElement(
+                        "button",
+                        { type: "button", className: "btn btn-success pick-mentor" },
+                        "Pick this Mentor"
+                    ),
+                    _react2.default.createElement(
                         "div",
                         { className: "media-left" },
                         _react2.default.createElement("img", { src: this.props.item.img, alt: this.props.item.name, className: "media-object", style: { width: 60 } })
@@ -29218,7 +29224,7 @@ var MentorBoxes = function (_React$Component) {
                             "p",
                             null,
                             this.props.item.text,
-                            "- "
+                            " "
                         )
                     )
                 )
