@@ -17,8 +17,3 @@ class FinalProject extends React.Component {
 export default FinalProject;
 
 
-      // <div>
-      //   <h1>Welcome to Oraculi!!!</h1>
-      // <Link to="/User"><button type="button" className="btn btn-default">User</button></Link>
-      // <Link to="/Mentor"><button type="button" className="btn btn-default">Mentor</button></Link>
-      // </div>

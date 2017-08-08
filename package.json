@@ -34,7 +34,9 @@
     "file-loader": "^0.11.2",
     "nodemon": "^1.11.0",
     "parallelshell": "^3.0.1",
-    "webpack": "^3.3.0"
+    "webpack": "^3.3.0",
+    "gulp-plumber": "~0.6.6",
+    "gulp-less": "~3.0.1"
   },
   "scripts": {
     "start": "node --use_strict server.js",

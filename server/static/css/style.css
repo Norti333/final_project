@@ -1697,6 +1697,9 @@ body.is-loading #header.alt .inner {
 	border: 3px solid white;
 	border-radius: 3px;
 }
+.media{
+	    box-shadow: 1px -1px 7px black;
+}
 
 html {
 	height: 100%;
