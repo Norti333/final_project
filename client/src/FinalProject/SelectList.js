@@ -9,6 +9,7 @@ const SelectList = (props) => {
     return (
         <div>
             <select onChange={props.change}>
+                <option disabled selected value>Please select a profession</option>
                 {boxes}
             </select>
         </div>

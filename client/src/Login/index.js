@@ -25,7 +25,7 @@ class Login extends React.Component {
       .post("/auth/login", user)
       .then(function(res) {
         alert(`Welcome ${res.data.username}!`);
-        self.props.setUser(res.data.username);
+        self.props.setUser(res.data);
         self.setState({
           currentUser: { password: "", username: "" },
           redirect: true

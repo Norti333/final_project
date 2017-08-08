@@ -4,9 +4,10 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
 const OpenTok = require("opentok");
-
 const passport = require("./server/models/Passport");
 const authRouting = require("./server/routing/authRouting.js");
+const User = require("./server/models/UserModel");
+const Meeting = require("./server/models/MeetingModel");
 
 const apiKey = "45929252";
 const apiSecret = "35e09c239d512dedf9ce33b0b51e1b99ee5f2bcf";
@@ -21,7 +22,6 @@ mongoose.connect(
 );
 
 const app = express();
-
 const opentok = new OpenTok(apiKey, apiSecret);
 
 app.use(express.static("./server/static/"));
@@ -33,7 +33,6 @@ app.use(
   })
 );
 
-//* Configure passport and session middleware
 app.use(
   expressSession({
     secret: "yourSecretHere",
@@ -44,14 +43,19 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-//* This tells the Server that when a request comes into '/auth'
-//* it should use the routes in 'authRouting',
-//* and those are in our new authRouting.js file
+const handler = function(res) {
+  return function(err, data) {
+    if (err) {
+      return err;
+    }
+    res.send(data);
+  };
+};
+
 app.use("/auth", authRouting);
 
 app.post("/startSession", function(req, res) {
   let nameToFind = req.body.name;
-
   function findName(myName) {
     return myName.name === nameToFind;
   }
@@ -115,6 +119,52 @@ app.post("/joinSession", function(req, res) {
 
     res.send(data);
   }
+});
+
+app.post("/newmeeting", function(req, res) {
+  let meeting = new Meeting(req.body);
+  meeting.save();
+  User.findById(meeting.menteeId, function(err, data) {
+    if (err) {
+      return err;
+    }
+    data.meetings.push(meeting._id);
+    data.save();
+    User.findById(meeting.mentorId, function(err, data) {
+      if (err) {
+        return err;
+      }
+      data.meetings.push(meeting._id);
+      data.save();
+      res.send(meeting);
+    });
+  });
+});
+
+app.delete("/deletemeeting/:meetingId", function(req, res) {
+  Meeting.findByIdAndRemove(req.params.meetingId, function(err, data) {
+    if (err) {
+      return err;
+    }
+    let meeting = data;
+    User.findById(meeting.menteeId, function(err, data) {
+      if (err) {
+        return err;
+      }
+      let index1 = data.meetings.indexOf(meeting._id);
+      data.meetings.splice(index1, 1);
+      data.save();
+      User.findById(meeting.mentorId, function(err, data) {
+        if (err) {
+          return err;
+        }
+        let index2 = data.meetings.indexOf(meeting._id);
+        data.meetings.splice(index2, 1);
+        data.save();
+        res.send(meeting);
+      });
+    });
+  });
 });
 
 //* Handle Browser refresh by redirecting to index.html
