@@ -1,18 +1,19 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var plm = require("passport-local-mongoose");
-
-var sessionSchema = new Schema({
-    date: Date,
-    time: Number
-});
+var Meeting = require("./MeetingModel")
 
 var UserSchema = new Schema({
   username: String,
   password: String,
   admin: Boolean,
-  activeSessions: [sessionSchema],
-  completedSessions: [sessionSchema]
+  mentor: Boolean,
+  name: String,
+  bio: String,
+  profilePic: String,
+  industries: String,
+  meetings: [{ type: Schema.Types.ObjectId, ref: 'Meeting' }]
+
 });
 
 UserSchema.plugin(plm);

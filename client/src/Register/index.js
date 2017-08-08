@@ -10,7 +10,12 @@ class Register extends React.Component {
     this.state = {
       currentUser: {
         username: "",
-        password: ""
+        password: "",
+        mentor: "",
+        name: "",
+        bio: "",
+        profilePic: "",
+        industries: ""
       },
       redirect: false
     };
@@ -53,7 +58,12 @@ class Register extends React.Component {
                 this.setState({
                   currentUser: {
                     username: event.target.value,
-                    password: this.state.currentUser.password
+                    password: this.state.currentUser.password,
+                    mentor: this.state.currentUser.mentor,
+                    name: this.state.currentUser.name,
+                    bio: this.state.currentUser.bio,
+                    profilePic: this.state.currentUser.profilePic,
+                    industries: this.state.currentUser.industries
                   }
                 })}
             />
@@ -67,8 +77,113 @@ class Register extends React.Component {
               onChange={event =>
                 this.setState({
                   currentUser: {
+                    username: this.state.currentUser.username,
                     password: event.target.value,
-                    username: this.state.currentUser.username
+                    mentor: this.state.currentUser.mentor,
+                    name: this.state.currentUser.name,
+                    bio: this.state.currentUser.bio,
+                    profilePic: this.state.currentUser.profilePic,
+                    industries: this.state.currentUser.industries
+                  }
+                })}
+            />
+            <input
+              type="mentor"
+              className="form-control"
+              id="mentor"
+              placeholder="Mentor? True or False"
+              required
+              value={this.state.currentUser.mentor}
+              onChange={event =>
+                this.setState({
+                  currentUser: {
+                    username: this.state.currentUser.username,
+                    password: this.state.currentUser.password,
+                    mentor: event.target.value,
+                    name: this.state.currentUser.name,
+                    bio: this.state.currentUser.bio,
+                    profilePic: this.state.currentUser.profilePic,
+                    industries: this.state.currentUser.industries
+                  }
+                })}
+            />
+            <input
+              type="name"
+              className="form-control"
+              id="name"
+              placeholder="Name"
+              required
+              value={this.state.currentUser.name}
+              onChange={event =>
+                this.setState({
+                  currentUser: {
+                    username: this.state.currentUser.username,
+                    password: this.state.currentUser.password,
+                    mentor: this.state.currentUser.mentor,
+                    name: event.target.value,
+                    bio: this.state.currentUser.bio,
+                    profilePic: this.state.currentUser.profilePic,
+                    industries: this.state.currentUser.industries
+                  }
+                })}
+            />
+            <input
+              type="bio"
+              className="form-control"
+              id="bio"
+              placeholder="Bio"
+              required
+              value={this.state.currentUser.bio}
+              onChange={event =>
+                this.setState({
+                  currentUser: {
+                    username: this.state.currentUser.username,
+                    password: this.state.currentUser.password,
+                    mentor: this.state.currentUser.mentor,
+                    name: this.state.currentUser.name,
+                    bio: event.target.value,
+                    profilePic: this.state.currentUser.profilePic,
+                    industries: this.state.currentUser.industries
+                  }
+                })}
+            />
+            <input
+              type="profilePic"
+              className="form-control"
+              id="profilePic"
+              placeholder="Profile Pic url"
+              required
+              value={this.state.currentUser.profilePic}
+              onChange={event =>
+                this.setState({
+                  currentUser: {
+                    username: this.state.currentUser.username,
+                    password: this.state.currentUser.password,
+                    mentor: this.state.currentUser.mentor,
+                    name: this.state.currentUser.name,
+                    bio: this.state.currentUser.bio,
+                    profilePic: event.target.value,
+                    industries: this.state.currentUser.industries
+                  }
+                })}
+            />
+            <input
+              type="industries"
+              className="form-control"
+              id="industries"
+              placeholder="industries"
+              required
+              value={this.state.currentUser.industries}
+              onChange={event =>
+                this.setState({
+                  currentUser: {
+                    username: this.state.currentUser.username,
+                    password: this.state.currentUser.password,
+                    mentor: this.state.currentUser.mentor,
+                    name: this.state.currentUser.name,
+                    bio: this.state.currentUser.bio,
+                    profilePic: this.state.currentUser.profilePic,
+                    industries: event.target.value
                   }
                 })}
             />

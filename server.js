@@ -7,6 +7,8 @@ const OpenTok = require("opentok");
 
 const passport = require("./server/models/Passport");
 const authRouting = require("./server/routing/authRouting.js");
+const User = require("./server/models/UserModel");
+const Meeting = require("./server/models/MeetingModel");
 
 const apiKey = "45929252";
 const apiSecret = "35e09c239d512dedf9ce33b0b51e1b99ee5f2bcf";
@@ -43,6 +45,15 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+const handler = function(res) {
+  return function(err, data) {
+    if (err) {
+      return err;
+    }
+    res.send(data);
+  };
+};
 
 //* This tells the Server that when a request comes into '/auth'
 //* it should use the routes in 'authRouting',
@@ -115,6 +126,34 @@ app.post("/joinSession", function(req, res) {
 
     res.send(data);
   }
+});
+
+app.post("/mentee/:userId", function(req, res) {
+  let newBooking = req.body;
+  User.findById(req.params.userId, function(err, data) {
+    data.activeSessions.push(newBooking);
+    data.save(handler(res));
+  });
+});
+
+app.post("/newmeeting", function(req, res) {
+  let meeting = new Meeting(req.body);
+  meeting.save();
+  User.findById(meeting.menteeId, function(err, data) {
+    if (err) {
+      return console.error(err);
+    }
+    data.meetings.push(meeting._id);
+    data.save();
+    User.findById(meeting.mentorId, function(err, data) {
+      if (err) {
+        return console.error(err);
+      }
+      data.meetings.push(meeting._id);
+      data.save();
+      res.send(meeting);
+    });
+  });
 });
 
 //* Handle Browser refresh by redirecting to index.html

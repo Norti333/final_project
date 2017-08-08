@@ -3,6 +3,15 @@ var router = express.Router();
 var passport = require("../models/Passport");
 var User = require("../models/UserModel");
 
+var routeHandler = function(res) {
+  return function(err, data) {
+    if (err) {
+      return err;
+    }
+    res.send(data);
+  };
+};
+
 //* Create Authentication Middleware
 var ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) {
@@ -31,6 +40,12 @@ router.post("/register", function(req, res, next) {
     new User({
       username: req.body.username,
       admin: admin,
+      mentor: req.body.mentor,
+      name: req.body.name,
+      bio: req.body.bio,
+      profilePic: req.body.profilePic,
+      industries: req.body.industries,
+      meetings: []
     }),
     req.body.password,
     function(err, user) {
@@ -64,6 +79,10 @@ router.get("/currentuser", ensureAuthenticated, function(req, res) {
   } else {
     res.send("No Current User");
   }
+});
+
+router.get("/users", ensureAuthenticated, function(req, res) {
+  User.find(routeHandler(res));
 });
 
 //* 4 - Logout Users

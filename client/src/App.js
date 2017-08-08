@@ -17,7 +17,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: null
+      currentUser: null,
+      userId: null
     };
     this.getUser = this.getUser.bind(this);
     this.setUser = this.setUser.bind(this);
@@ -30,7 +31,7 @@ class App extends React.Component {
       .get("/auth/currentUser")
       .then(function(res) {
         alert(`Welcome Back ${res.data.username}!`);
-        self.setState({ currentUser: res.data.username });
+        self.setState({ currentUser: res.data.username, userId: res.data._id });
       })
       .catch(function(err) {
         console.log(err);
