@@ -29037,6 +29037,10 @@ var _SelectList = __webpack_require__(267);
 
 var _SelectList2 = _interopRequireDefault(_SelectList);
 
+var _MentorListBoxes = __webpack_require__(270);
+
+var _MentorListBoxes2 = _interopRequireDefault(_MentorListBoxes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29054,31 +29058,71 @@ var ChooseMentor = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (ChooseMentor.__proto__ || Object.getPrototypeOf(ChooseMentor)).call(this, props));
 
         _this.state = {
-            Professions: [{ name: "Front End Web Developer", Mentors: [] }, { name: "Back End Web Developer", Mentors: [] }, { name: "Full Stack Web Developer", Mentors: [] }, { name: "Big Data", Mentors: [] }, { name: "Cyber Security", Mentors: [] }],
-            value: ''
+            Professions: [{
+                name: "Front End Web Developer", Mentors: [{
+                    img: "https://randomuser.me/api/portraits/med/men/83.jpg",
+                    text: "I'm the best Mentor, Choose me!!",
+                    name: "Joe McGee"
+                }]
+            }, {
+                name: "Back End Web Developer", Mentors: [{
+                    img: "https://randomuser.me/api/portraits/med/men/63.jpg",
+                    text: "I'm the worst Mentor, I'll get you hired and fired",
+                    name: "Jerry sanders!"
+                }, {
+                    img: "https://randomuser.me/api/portraits/med/men/61.jpg",
+                    text: "Im average, think about me...",
+                    name: "Stanly Green"
+                }]
+            }, { name: "Full Stack Web Developer", Mentors: [] }, { name: "Big Data", Mentors: [] }, { name: "Cyber Security", Mentors: [] }], value: ''
         };
         _this.change = _this.change.bind(_this);
+        _this.findIndex = _this.findIndex.bind(_this);
+        _this.renderMentors = _this.renderMentors.bind(_this);
         return _this;
     }
 
     _createClass(ChooseMentor, [{
+        key: "renderMentors",
+        value: function renderMentors(i) {
+            var mentorList = this.state.Professions[i].Mentors;
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(_MentorListBoxes2.default, { mentors: mentorList })
+            );
+        }
+    }, {
+        key: "findIndex",
+        value: function findIndex(prof) {
+            var index = "";
+            for (var i = 0; i < this.state.Professions.length; i++) {
+                if (this.state.Professions[i].name === prof) {
+                    index = i;
+                    break;
+                }
+            }
+            this.renderMentors(index);
+        }
+    }, {
         key: "change",
         value: function change(event) {
+            this.findIndex(event.target.value);
             this.setState({ value: event.target.value });
-            console.log(this.state.value);
         }
     }, {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
                 "div",
-                null,
+                { id: "mentor-page" },
                 _react2.default.createElement(
                     "h2",
                     null,
                     "Choose Mentor Industry"
                 ),
-                _react2.default.createElement(_SelectList2.default, { change: this.change, Professions: this.state.Professions })
+                _react2.default.createElement(_SelectList2.default, { change: this.change, Professions: this.state.Professions }),
+                this.renderMentors
             );
         }
     }]);
@@ -29087,6 +29131,120 @@ var ChooseMentor = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = ChooseMentor;
+
+/***/ }),
+/* 270 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _MentorBoxes = __webpack_require__(271);
+
+var _MentorBoxes2 = _interopRequireDefault(_MentorBoxes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MentorListBoxes = function MentorListBoxes(props) {
+    console.log(props);
+    var boxes = props.mentors.map(function (item, index) {
+        return _react2.default.createElement(_MentorBoxes2.default, {
+            key: index,
+            item: item });
+    });
+    return _react2.default.createElement(
+        'div',
+        null,
+        boxes
+    );
+};
+
+exports.default = MentorListBoxes;
+
+/***/ }),
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MentorBoxes = function (_React$Component) {
+    _inherits(MentorBoxes, _React$Component);
+
+    function MentorBoxes() {
+        _classCallCheck(this, MentorBoxes);
+
+        return _possibleConstructorReturn(this, (MentorBoxes.__proto__ || Object.getPrototypeOf(MentorBoxes)).apply(this, arguments));
+    }
+
+    _createClass(MentorBoxes, [{
+        key: "render",
+        value: function render() {
+            console.log(this.props);
+            return _react2.default.createElement(
+                "div",
+                { className: "equalHMV eq" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "media" },
+                    _react2.default.createElement("span", { className: "glyphicon glyphicon-trash pull-right" }),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "media-left" },
+                        _react2.default.createElement("img", { src: this.props.icon, alt: this.props.name, className: "media-object", style: { width: 60 } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "media-body" },
+                        _react2.default.createElement(
+                            "h4",
+                            { className: "media-heading" },
+                            this.props.name
+                        ),
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            this.props.text,
+                            "- ",
+                            this.props.feelslike_c,
+                            " \xA0| C"
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return MentorBoxes;
+}(_react2.default.Component);
+
+exports.default = MentorBoxes;
 
 /***/ })
 /******/ ]);
