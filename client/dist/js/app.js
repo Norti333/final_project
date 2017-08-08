@@ -29144,7 +29144,6 @@ var _MentorBoxes2 = _interopRequireDefault(_MentorBoxes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MentorListBoxes = function MentorListBoxes(props) {
-    console.log(props.mentors);
     var boxes = props.mentors.map(function (item, index) {
         return _react2.default.createElement(_MentorBoxes2.default, {
             key: index,
@@ -29198,7 +29197,7 @@ var MentorBoxes = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 "div",
-                { className: "equalHMV eq" },
+                { className: "equalHMV eq col-xs-6 col-sm-6 col-md-6 col-lg-6" },
                 _react2.default.createElement(
                     "div",
                     { className: "media" },

@@ -3,7 +3,7 @@ import React from 'react';
 class MentorBoxes extends React.Component {
     render() {
         return (
-            <div className="equalHMV eq">
+            <div className="equalHMV eq col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div className="media">
                   <button type="button" className="btn btn-success pick-mentor">Pick this Mentor</button>
                     <div className="media-left">
