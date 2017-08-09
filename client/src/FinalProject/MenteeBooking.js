@@ -18,7 +18,7 @@ renderUserName(){
     return (
       <div>
         <h2>Welcome {this.renderUserName()} </h2>
-        <ChooseMentor mentors={this.props.mentors}/>
+        <ChooseMentor userId ={this.props.user._id} mentors={this.props.mentors}/>
       </div>
     );
   }

@@ -9,7 +9,6 @@ import Mentor from "./FinalProject/Mentor";
 import ChooseMentor from "./FinalProject/ChooseMentor";
 import Mentee from "./FinalProject/Mentee";
 import MenteeSession from "./FinalProject/MenteeSession";
-import MeetingForm from "./FinalProject/Meetings";
 
 const AppRoutes = props => {
   return (
@@ -22,8 +21,7 @@ const AppRoutes = props => {
         <Route name="mentor" exact path="/mentor" render={routesProps => <Mentor {...routesProps} {...props} />} />
         <Route name="ChooseMentor" exact path="/chooseMentor" render={routesProps => <ChooseMentor {...routesProps} {...props} />} />
         <Route name="mentee" exact path="/Mentee" render={routesProps => <Mentee {...routesProps} {...props} />} />
-        <Route name="menteesession" exact path="/Mentee/MenteeSession" component={MenteeSession} />
-         <Route name="menteeMeetings" exact path="/mentee/meeting" render={routesProps => <MeetingForm {...routesProps} {...props} />} />
+        <Route name="menteesession" exact path="/Mentee/MenteeSession" render={routesProps => <MenteeSession {...routesProps} {...props} />} />
       </Switch>
     </div>
   );

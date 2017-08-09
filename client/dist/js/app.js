@@ -12034,6 +12034,10 @@ var _MentorListBoxes = __webpack_require__(270);
 
 var _MentorListBoxes2 = _interopRequireDefault(_MentorListBoxes);
 
+var _Meetings = __webpack_require__(106);
+
+var _Meetings2 = _interopRequireDefault(_Meetings);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12041,6 +12045,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var axios = __webpack_require__(40);
 
 var ChooseMentor = function (_React$Component) {
     _inherits(ChooseMentor, _React$Component);
@@ -12051,14 +12057,49 @@ var ChooseMentor = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (ChooseMentor.__proto__ || Object.getPrototypeOf(ChooseMentor)).call(this, props));
 
         _this.state = {
-            Professions: [{ name: "Front End Web Developer" }, { name: "Back End Web Developer" }, { name: "Full Stack Web Developer" }, { name: "Big Data" }, { name: "Cyber Security" }], value: '', mentors: []
+            Professions: [{ name: "Front End Web Developer" }, { name: "Back End Web Developer" }, { name: "Full Stack Web Developer" }, { name: "Big Data" }, { name: "Cyber Security" }], value: '', mentors: [], mentorId: null
         };
         _this.change = _this.change.bind(_this);
         _this.renderMentors = _this.renderMentors.bind(_this);
+        _this.handleMeeting = _this.handleMeeting.bind(_this);
+        _this.handleMentorPick = _this.handleMentorPick.bind(_this);
+        _this.handleSetMeeting = _this.handleSetMeeting.bind(_this);
+
         return _this;
     }
 
     _createClass(ChooseMentor, [{
+        key: "handleSetMeeting",
+        value: function handleSetMeeting(date) {
+            var newMeeting = {
+                date: date,
+                menteeId: this.props.userId,
+                mentorId: this.state.mentorId
+            };
+            var self = this;
+            axios.post('/meeting/newmeeting', newMeeting).then(function (res) {
+                self.setState({ mentorId: null });
+                var date = new Date(res.data.date);
+                alert("Meeting Set at: " + date);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }, {
+        key: "handleMeeting",
+        value: function handleMeeting(mentorId) {
+            this.setState({ mentorId: mentorId });
+        }
+    }, {
+        key: "handleMentorPick",
+        value: function handleMentorPick() {
+            if (!this.state.mentorId) {
+                return _react2.default.createElement(_MentorListBoxes2.default, { mentors: this.state.mentors, handleMeeting: this.handleMeeting });
+            } else {
+                return _react2.default.createElement(_Meetings2.default, { handleSetMeeting: this.handleSetMeeting });
+            }
+        }
+    }, {
         key: "renderMentors",
         value: function renderMentors(prof) {
             var tempArray = this.props.mentors.slice();
@@ -12085,8 +12126,8 @@ var ChooseMentor = function (_React$Component) {
                     "Choose Mentor's Industry"
                 ),
                 _react2.default.createElement(_SelectList2.default, { change: this.change, Professions: this.state.Professions }),
-                _react2.default.createElement("hr", null),
-                _react2.default.createElement(_MentorListBoxes2.default, { mentors: this.state.mentors })
+                this.handleMentorPick(),
+                _react2.default.createElement("hr", null)
             );
         }
     }]);
@@ -12098,6 +12139,95 @@ exports.default = ChooseMentor;
 
 /***/ }),
 /* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MeetingForm = function (_React$Component) {
+  _inherits(MeetingForm, _React$Component);
+
+  function MeetingForm(props) {
+    _classCallCheck(this, MeetingForm);
+
+    var _this = _possibleConstructorReturn(this, (MeetingForm.__proto__ || Object.getPrototypeOf(MeetingForm)).call(this, props));
+
+    _this.state = {
+      date: "mm/dd/yyyy",
+      time: "00:00"
+    };
+    _this.onSubmitTime = _this.onSubmitTime.bind(_this);
+    return _this;
+  }
+
+  _createClass(MeetingForm, [{
+    key: "onSubmitTime",
+    value: function onSubmitTime(event) {
+      event.preventDefault();
+      var time = this.state.date + "T" + this.state.time + ":00";
+      var d = new Date(time);
+      this.props.handleSetMeeting(d);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        "form",
+        { onSubmit: this.onSubmitTime },
+        _react2.default.createElement(
+          "h3",
+          null,
+          " Enter date"
+        ),
+        _react2.default.createElement("input", { type: "date", className: "form-control", value: this.state.date, onChange: function onChange(event) {
+            return _this2.setState({ date: event.target.value });
+          } }),
+        _react2.default.createElement(
+          "h3",
+          null,
+          " Enter time"
+        ),
+        _react2.default.createElement("input", { type: "time", className: "form-control", value: this.state.time, onChange: function onChange(event) {
+            return _this2.setState({ time: event.target.value });
+          } }),
+        _react2.default.createElement(
+          "button",
+          { type: "submit", className: "btn btn-success" },
+          "Submit"
+        )
+      );
+    }
+  }]);
+
+  return MeetingForm;
+}(_react2.default.Component);
+
+exports.default = MeetingForm;
+
+/***/ }),
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12224,95 +12354,6 @@ var ChatRoom = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = ChatRoom;
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(7);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var MeetingForm = function (_React$Component) {
-  _inherits(MeetingForm, _React$Component);
-
-  function MeetingForm(props) {
-    _classCallCheck(this, MeetingForm);
-
-    var _this = _possibleConstructorReturn(this, (MeetingForm.__proto__ || Object.getPrototypeOf(MeetingForm)).call(this, props));
-
-    _this.state = {
-      date: "mm/dd/yyyy",
-      time: "00:00"
-    };
-    _this.onSubmitTime = _this.onSubmitTime.bind(_this);
-    return _this;
-  }
-
-  _createClass(MeetingForm, [{
-    key: "onSubmitTime",
-    value: function onSubmitTime(event) {
-      event.preventDefault();
-      var time = this.state.date + "T" + this.state.time + ":00";
-      var d = new Date(time);
-      console.log(d);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      return _react2.default.createElement(
-        "form",
-        { onSubmit: this.onSubmitTime },
-        _react2.default.createElement(
-          "h3",
-          null,
-          " Enter date"
-        ),
-        _react2.default.createElement("input", { type: "date", className: "form-control", value: this.state.date, onChange: function onChange(event) {
-            return _this2.setState({ date: event.target.value });
-          } }),
-        _react2.default.createElement(
-          "h3",
-          null,
-          " Enter time"
-        ),
-        _react2.default.createElement("input", { type: "time", className: "form-control", value: this.state.time, onChange: function onChange(event) {
-            return _this2.setState({ time: event.target.value });
-          } }),
-        _react2.default.createElement(
-          "button",
-          { type: "submit", className: "btn btn-success" },
-          "Submit"
-        )
-      );
-    }
-  }]);
-
-  return MeetingForm;
-}(_react2.default.Component);
-
-exports.default = MeetingForm;
 
 /***/ }),
 /* 108 */
@@ -27117,10 +27158,6 @@ var _MenteeSession = __webpack_require__(275);
 
 var _MenteeSession2 = _interopRequireDefault(_MenteeSession);
 
-var _Meetings = __webpack_require__(107);
-
-var _Meetings2 = _interopRequireDefault(_Meetings);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AppRoutes = function AppRoutes(props) {
@@ -27151,9 +27188,8 @@ var AppRoutes = function AppRoutes(props) {
       _react2.default.createElement(_reactRouterDom.Route, { name: "mentee", exact: true, path: "/Mentee", render: function render(routesProps) {
           return _react2.default.createElement(_Mentee2.default, _extends({}, routesProps, props));
         } }),
-      _react2.default.createElement(_reactRouterDom.Route, { name: "menteesession", exact: true, path: "/Mentee/MenteeSession", component: _MenteeSession2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { name: "menteeMeetings", exact: true, path: "/mentee/meeting", render: function render(routesProps) {
-          return _react2.default.createElement(_Meetings2.default, _extends({}, routesProps, props));
+      _react2.default.createElement(_reactRouterDom.Route, { name: "menteesession", exact: true, path: "/Mentee/MenteeSession", render: function render(routesProps) {
+          return _react2.default.createElement(_MenteeSession2.default, _extends({}, routesProps, props));
         } })
     )
   );
@@ -29260,7 +29296,7 @@ var MenteeBooking = function (_React$Component) {
           this.renderUserName(),
           " "
         ),
-        _react2.default.createElement(_ChooseMentor2.default, { mentors: this.props.mentors })
+        _react2.default.createElement(_ChooseMentor2.default, { userId: this.props.user._id, mentors: this.props.mentors })
       );
     }
   }]);
@@ -29295,7 +29331,8 @@ var MentorListBoxes = function MentorListBoxes(props) {
     var boxes = props.mentors.map(function (item, index) {
         return _react2.default.createElement(_MentorBoxes2.default, {
             key: index,
-            item: item });
+            item: item,
+            handleMeeting: props.handleMeeting.bind(null, item._id) });
     });
     return _react2.default.createElement(
         'div',
@@ -29352,15 +29389,9 @@ var MentorBoxes = function (_React$Component) {
                     "div",
                     { className: "media" },
                     _react2.default.createElement(
-                        _reactRouterDom.Link,
-                        { to: "/mentee/meeting" },
-                        "  ",
-                        _react2.default.createElement(
-                            "button",
-                            { type: "button", className: "btn btn-success pick-mentor" },
-                            "Pick this Mentor"
-                        ),
-                        " "
+                        "button",
+                        { type: "button", className: "btn btn-success pick-mentor", onClick: this.props.handleMeeting },
+                        "Pick this Mentor"
                     ),
                     _react2.default.createElement(
                         "div",
@@ -29411,11 +29442,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(7);
 
-var _ChatRoom = __webpack_require__(106);
+var _ChatRoom = __webpack_require__(107);
 
 var _ChatRoom2 = _interopRequireDefault(_ChatRoom);
 
-var _Meetings = __webpack_require__(107);
+var _Meetings = __webpack_require__(106);
 
 var _Meetings2 = _interopRequireDefault(_Meetings);
 
@@ -29707,11 +29738,15 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ChatRoom = __webpack_require__(106);
+var _ChatRoom = __webpack_require__(107);
 
 var _ChatRoom2 = _interopRequireDefault(_ChatRoom);
 
 var _reactRouterDom = __webpack_require__(7);
+
+var _MeetingBoxes = __webpack_require__(276);
+
+var _MeetingBoxes2 = _interopRequireDefault(_MeetingBoxes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29721,16 +29756,63 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var axios = __webpack_require__(40);
+
 var MenteeSession = function (_React$Component) {
   _inherits(MenteeSession, _React$Component);
 
   function MenteeSession(props) {
     _classCallCheck(this, MenteeSession);
 
-    return _possibleConstructorReturn(this, (MenteeSession.__proto__ || Object.getPrototypeOf(MenteeSession)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (MenteeSession.__proto__ || Object.getPrototypeOf(MenteeSession)).call(this, props));
+
+    _this.state = {
+      dates: []
+    };
+    _this.showMeetings = _this.showMeetings.bind(_this);
+    return _this;
   }
 
   _createClass(MenteeSession, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var user = this.props.user._id;
+      var self = this;
+      axios.get("/meeting/" + user).then(function (res) {
+        var tempArray = res.data.meetings;
+        var date = new Date();
+        var d = JSON.stringify(date);
+        var upcomingMeetings = tempArray.filter(function (tempArray) {
+          return tempArray.date >= d;
+        });
+        upcomingMeetings.sort(function (a, b) {
+          return new Date(a.date) - new Date(b.date);
+        });
+        self.setState({ dates: upcomingMeetings });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "showMeetings",
+    value: function showMeetings() {
+      if (!this.state.dates) {
+        return false;
+      } else {
+        var boxes = this.state.dates.map(function (item, index) {
+          return _react2.default.createElement(_MeetingBoxes2.default, {
+            key: index,
+            item: item
+          });
+        });
+        return _react2.default.createElement(
+          "ul",
+          null,
+          boxes
+        );
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
@@ -29741,6 +29823,7 @@ var MenteeSession = function (_React$Component) {
           null,
           "Upcoming Sessions:"
         ),
+        this.showMeetings(),
         _react2.default.createElement(
           _reactRouterDom.Link,
           { to: "/mentee" },
@@ -29760,6 +29843,58 @@ var MenteeSession = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = MenteeSession;
+
+/***/ }),
+/* 276 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MeetingBoxes = function (_React$Component) {
+    _inherits(MeetingBoxes, _React$Component);
+
+    function MeetingBoxes(props) {
+        _classCallCheck(this, MeetingBoxes);
+
+        return _possibleConstructorReturn(this, (MeetingBoxes.__proto__ || Object.getPrototypeOf(MeetingBoxes)).call(this, props));
+    }
+
+    _createClass(MeetingBoxes, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "li",
+                null,
+                " ",
+                this.props.item.date,
+                " "
+            );
+        }
+    }]);
+
+    return MeetingBoxes;
+}(_react2.default.Component);
+
+exports.default = MeetingBoxes;
 
 /***/ })
 /******/ ]);

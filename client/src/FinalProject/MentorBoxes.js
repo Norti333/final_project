@@ -6,7 +6,7 @@ class MentorBoxes extends React.Component {
         return (
             <div className="equalHMV eq col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div className="media">
-                <Link to='/mentee/meeting'>  <button type="button" className="btn btn-success pick-mentor">Pick this Mentor</button> </Link>
+                <button type="button" className="btn btn-success pick-mentor" onClick={this.props.handleMeeting} >Pick this Mentor</button>
                     <div className="media-left">
                         <img src={this.props.item.profilePic} alt={this.props.item.name} className="media-object" style={{ width: 60 }} /></div>
                     <div className="media-body">

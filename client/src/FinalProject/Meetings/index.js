@@ -14,7 +14,7 @@ onSubmitTime(event){
   event.preventDefault()
   let time = this.state.date +"T"+this.state.time+":00" 
   var d = new Date(time)
- console.log(d)
+ this.props.handleSetMeeting(d)
 }
   render() {
     return (

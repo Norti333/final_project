@@ -6,7 +6,8 @@ const MentorListBoxes = (props) => {
         .mentors
         .map((item, index) => <MentorsBoxes
             key={index}
-            item={item} />)
+            item={item}
+            handleMeeting = {props.handleMeeting.bind(null, item._id)} />)
     return (
         <div>
             {boxes}
