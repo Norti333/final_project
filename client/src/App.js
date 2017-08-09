@@ -18,7 +18,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       currentUser: null,
-      allUsers: null
+      mentors: null
     };
     this.getUsersOnLoad = this.getUsersOnLoad.bind(this);
     this.setUser = this.setUser.bind(this);
@@ -28,12 +28,19 @@ class App extends React.Component {
   getUsersOnLoad() {
     let self = this;
     axios
-      .get("/auth/getUsers")
+      .get("/user")
       .then(function(res) {
         alert(`Welcome Back ${res.data.currentUser.username}!`);
+        let allUsers = res.data.allUsers;
+        let mentorArr = [];
+        for (let i = 0; i < allUsers.length; i++) {
+          if (allUsers[i].mentor) {
+            mentorArr.push(allUsers[i]);
+          }
+        }
         self.setState({
           currentUser: res.data.currentUser,
-          allUsers: res.data.allUsers
+          mentors: mentorArr
         });
       })
       .catch(function(err) {
@@ -49,10 +56,17 @@ class App extends React.Component {
     this.setState({ currentUser: data });
     let self = this;
     axios
-      .get("/auth/getUsers")
+      .get("/user")
       .then(function(res) {
+        let allUsers = res.data.allUsers;
+        let mentorArr = [];
+        for (let i = 0; i < allUsers.length; i++) {
+          if (allUsers[i].mentor) {
+            mentorArr.push(allUsers[i]);
+          }
+        }
         self.setState({
-          allUsers: res.data.allUsers
+          mentors: mentorArr
         });
       })
       .catch(function(err) {
@@ -64,7 +78,7 @@ class App extends React.Component {
     if (this.state.currentUser) {
       let self = this;
       axios
-        .get("/auth/logout")
+        .get("/user/logout")
         .then(function(res) {
           alert(`Logged Out!`);
           self.setState({ currentUser: null });
@@ -81,7 +95,11 @@ class App extends React.Component {
         <div>
           <NavBar user={this.state.currentUser} logout={this.logout} />
           <div>
-            <AppRoutes setUser={this.setUser} user={this.state.currentUser} />
+            <AppRoutes
+              setUser={this.setUser}
+              user={this.state.currentUser}
+              mentors={this.state.mentors}
+            />
           </div>
         </div>
       </BrowserRouter>

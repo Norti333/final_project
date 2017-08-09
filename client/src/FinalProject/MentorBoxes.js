@@ -8,10 +8,10 @@ class MentorBoxes extends React.Component {
                 <div className="media">
                 <Link to='/mentee/meeting'>  <button type="button" className="btn btn-success pick-mentor">Pick this Mentor</button> </Link>
                     <div className="media-left">
-                        <img src={this.props.item.img} alt={this.props.item.name} className="media-object" style={{ width: 60 }} /></div>
+                        <img src={this.props.item.profilePic} alt={this.props.item.name} className="media-object" style={{ width: 60 }} /></div>
                     <div className="media-body">
                         <h4 className="media-heading">{this.props.item.name}</h4>
-                        <p>{this.props.item.text} </p>
+                        <p>{this.props.item.bio} </p>
                     </div>
                 </div>
             </div>

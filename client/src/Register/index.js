@@ -10,7 +10,7 @@ class Register extends React.Component {
     super(props);
     this.state = {
       currentUser: {
-        isMentor: false,
+        mentor: false,
         username: "",
         password: "",
         name: "",
@@ -38,7 +38,7 @@ class Register extends React.Component {
                   currentUser: {
                     username: this.state.currentUser.username,
                     password: this.state.currentUser.password,
-                    isMentor: this.state.currentUser.isMentor,
+                    mentor: this.state.currentUser.mentor,
                     name:  this.state.currentUser.name,
                     bio: this.state.currentUser.bio,
                     profilePic: this.state.currentUser.profilePic,
@@ -51,7 +51,7 @@ class Register extends React.Component {
                   currentUser: {
                     username: this.state.currentUser.username,
                     password: this.state.currentUser.password,
-                    isMentor: !this.state.currentUser.isMentor,
+                    mentor: !this.state.currentUser.mentor,
                     name:  this.state.currentUser.name,
                     bio: this.state.currentUser.bio,
                     profilePic: this.state.currentUser.profilePic,
@@ -65,7 +65,7 @@ class Register extends React.Component {
     let user = this.state.currentUser;
     let self = this;
     axios
-      .post("/auth/register", user)
+      .post("/user/register", user)
       .then(function(res) {
         alert(`Welcome ${res.data.username}!`);
         self.props.setUser(res.data.username);
@@ -77,7 +77,7 @@ class Register extends React.Component {
       .catch(function(error) {});
   }
   registerMentor(){
-    if(!this.state.currentUser.isMentor){
+    if(!this.state.currentUser.mentor){
       return false
     } else {
       return (
@@ -94,6 +94,7 @@ class Register extends React.Component {
                   currentUser: {
                     username: this.state.currentUser.username,
                     password: this.state.currentUser.password,
+                    mentor: this.state.currentUser.mentor,
                     name: event.target.value,
                     bio: this.state.currentUser.bio,
                     profilePic: this.state.currentUser.profilePic,
@@ -113,6 +114,7 @@ class Register extends React.Component {
                   currentUser: {
                     username: this.state.currentUser.username,
                     password: this.state.currentUser.password,
+                    mentor: this.state.currentUser.mentor,
                     name: this.state.currentUser.name,
                     bio: event.target.value,
                     profilePic: this.state.currentUser.profilePic,
@@ -132,6 +134,7 @@ class Register extends React.Component {
                   currentUser: {
                     username: this.state.currentUser.username,
                     password: this.state.currentUser.password,
+                    mentor: this.state.currentUser.mentor,
                     name: this.state.currentUser.name,
                     bio: this.state.currentUser.bio,
                     profilePic: event.target.value,
@@ -166,6 +169,7 @@ class Register extends React.Component {
                   currentUser: {
                     username: event.target.value,
                     password: this.state.currentUser.password,
+                    mentor: this.state.currentUser.mentor,
                     name: this.state.currentUser.name,
                     bio: this.state.currentUser.bio,
                     profilePic: this.state.currentUser.profilePic,
@@ -185,6 +189,7 @@ class Register extends React.Component {
                   currentUser: {
                     username: this.state.currentUser.username,
                     password: event.target.value,
+                    mentor: this.state.currentUser.mentor,
                     name: this.state.currentUser.name,
                     bio: this.state.currentUser.bio,
                     profilePic: this.state.currentUser.profilePic,
@@ -194,7 +199,7 @@ class Register extends React.Component {
 
             />
            
-     <label>Want to be a Mentor ? <input name="isMentor" type="checkbox" checked={this.state.currentUser.isMentor} onChange={this.handleInputChange} />
+     <label>Want to be a Mentor ? <input name="mentor" type="checkbox" checked={this.state.currentUser.mentor} onChange={this.handleInputChange} />
         </label>
         {this.registerMentor()}
              <span className="input-group-btn">

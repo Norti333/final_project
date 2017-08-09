@@ -1,20 +1,11 @@
-var express = require("express");
-var router = express.Router();
-var passport = require("../models/Passport");
-var User = require("../models/UserModel");
-var Meeting = require("../models/MeetingModel");
+const express = require("express");
+const router = express.Router();
 
-var routeHandler = function(res) {
-  return function(err, data) {
-    if (err) {
-      return err;
-    }
-    res.send(data);
-  };
-};
+const passport = require("../models/Passport");
+const User = require("../models/UserModel");
 
 //* Create Authentication Middleware
-var ensureAuthenticated = function(req, res, next) {
+const ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
@@ -22,20 +13,20 @@ var ensureAuthenticated = function(req, res, next) {
   }
 };
 
-//*  The /auth Routes Go Here
-
+//!  The /auth Routes Go Here
 //* 1 - Register New Users and Log them in
 router.post("/register", function(req, res, next) {
   let temp = req.body.username;
+  let admin = "";
   if (
     temp === "mosh" ||
     temp === "michael" ||
     temp === "david" ||
     temp === "gary"
   ) {
-    var admin = true;
+    admin = true;
   } else {
-    var admin = false;
+    admin = false;
   }
   User.register(
     new User({
@@ -73,8 +64,14 @@ router.post("/login", passport.authenticate("local"), function(req, res) {
   });
 });
 
-//* 3 - Check for a Logged In User
-router.get("/getUsers", ensureAuthenticated, function(req, res) {
+//* 3 - Logout Users
+router.get("/logout", function(req, res) {
+  req.logout();
+  res.send("Logged Out");
+});
+
+//* 4 - Check for a Logged In User + Get all Users
+router.get("/", ensureAuthenticated, function(req, res) {
   if (req.user) {
     let temp = {};
     temp.currentUser = req.user;
@@ -88,27 +85,6 @@ router.get("/getUsers", ensureAuthenticated, function(req, res) {
   } else {
     res.send("No Current User");
   }
-});
-
-router.get("/meetings", function(req, res) {
-  Meeting.find(routeHandler(res));
-});
-
-router.get("/meetings/:userId", function(req, res) {
-  User.findById(req.params.userId)
-    .populate("meetings")
-    .exec(function(err, data) {
-      if (err) {
-        return err;
-      }
-      res.send(data);
-    });
-});
-
-//* 4 - Logout Users
-router.get("/logout", function(req, res) {
-  req.logout();
-  res.send("Logged Out");
 });
 
 module.exports = router;

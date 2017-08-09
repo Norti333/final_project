@@ -16,7 +16,7 @@ class Footer extends React.Component {
                 <li><a href="https://www.linkedin.com/feed/" className="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
                 <li><a href="https://mail.google.com/" className="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
-            <p class="copyright">&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.</p>
+            <p className="copyright">&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.</p>
         </footer>
     );
   }

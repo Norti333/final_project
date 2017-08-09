@@ -6,27 +6,11 @@ class ChooseMentor extends React.Component {
         super(props);
         this.state = {
             Professions: [
-                {
-                    name: "Front End Web Developer", Mentors: [{
-                        img: "https://randomuser.me/api/portraits/med/men/83.jpg",
-                        text: "I'm the best Mentor, Choose me!!",
-                        name: "Joe McGee"
-                    }]
-                },
-                {
-                    name: "Back End Web Developer", Mentors: [{
-                        img: "https://randomuser.me/api/portraits/med/men/63.jpg",
-                        text: "I'm the worst Mentor, I'll get you hired and fired",
-                        name: "Jerry sanders!"
-                    }, {
-                        img: "https://randomuser.me/api/portraits/med/men/61.jpg",
-                        text: "Im average, think about me...",
-                        name: "Stanly Green"
-                    }]
-                },
-                { name: "Full Stack Web Developer", Mentors: [] },
-                { name: "Big Data", Mentors: [] },
-                { name: "Cyber Security", Mentors: [] }
+                { name: "Front End Web Developer"},
+                { name: "Back End Web Developer"},
+                { name: "Full Stack Web Developer" },
+                { name: "Big Data"},
+                { name: "Cyber Security"}
             ], value: '', mentors: []
         }
         this.change = this.change.bind(this)
@@ -34,14 +18,11 @@ class ChooseMentor extends React.Component {
     }
 
     renderMentors(prof) {
-        let index = ""
-        for (let i = 0; i < this.state.Professions.length; i++) {
-            if (this.state.Professions[i].name === prof) {
-                index = i;
-                break
-            }
-        }
-        this.setState({ mentors: this.state.Professions[index].Mentors })
+        let tempArray = this.props.mentors.slice()
+        let newTempArray = tempArray.filter(function(tempArray){
+             return tempArray.industries === prof
+        })
+        this.setState({ mentors: newTempArray })
     }
 
     change(event) {
