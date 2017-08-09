@@ -22,7 +22,7 @@ class Login extends React.Component {
     let user = this.state.currentUser;
     let self = this;
     axios
-      .post("/auth/login", user)
+      .post("/user/login", user)
       .then(function(res) {
         alert(`Welcome ${res.data.username}!`);
         self.props.setUser(res.data);

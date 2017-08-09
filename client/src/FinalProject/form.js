@@ -17,7 +17,7 @@ class Form extends React.Component {
     let name = { name: this.state.name };
     let self = this;
     axios
-      .post("/startSession", name)
+      .post("/chat/startChat", name)
       .then(function (res) {
         if (!res.data) {
           alert("Room Name Already Exists.");
@@ -36,7 +36,7 @@ class Form extends React.Component {
     let name = { name: this.state.name };
     let self = this;
     axios
-      .post("/joinSession", name)
+      .post("/chat/joinChat", name)
       .then(function (res) {
         if (!res.data) {
           alert("Please Enter A Valid Room Name.");

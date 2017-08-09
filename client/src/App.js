@@ -28,7 +28,7 @@ class App extends React.Component {
   getUsersOnLoad() {
     let self = this;
     axios
-      .get("/auth/getUsers")
+      .get("/user")
       .then(function(res) {
         alert(`Welcome Back ${res.data.currentUser.username}!`);
         self.setState({
@@ -49,7 +49,7 @@ class App extends React.Component {
     this.setState({ currentUser: data });
     let self = this;
     axios
-      .get("/auth/getUsers")
+      .get("/user")
       .then(function(res) {
         self.setState({
           allUsers: res.data.allUsers
@@ -64,7 +64,7 @@ class App extends React.Component {
     if (this.state.currentUser) {
       let self = this;
       axios
-        .get("/auth/logout")
+        .get("/user/logout")
         .then(function(res) {
           alert(`Logged Out!`);
           self.setState({ currentUser: null });
