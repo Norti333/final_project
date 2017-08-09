@@ -12136,21 +12136,24 @@ var App = function (_React$Component) {
 
     _this.state = {
       currentUser: null,
-      userId: null
+      allUsers: null
     };
-    _this.getUser = _this.getUser.bind(_this);
+    _this.getUsersOnLoad = _this.getUsersOnLoad.bind(_this);
     _this.setUser = _this.setUser.bind(_this);
     _this.logout = _this.logout.bind(_this);
     return _this;
   }
 
   _createClass(App, [{
-    key: "getUser",
-    value: function getUser() {
+    key: "getUsersOnLoad",
+    value: function getUsersOnLoad() {
       var self = this;
-      axios.get("/auth/currentUser").then(function (res) {
-        alert("Welcome Back " + res.data.username + "!");
-        self.setState({ currentUser: res.data.username, userId: res.data._id });
+      axios.get("/auth/getUsers").then(function (res) {
+        alert("Welcome Back " + res.data.currentUser.username + "!");
+        self.setState({
+          currentUser: res.data.currentUser,
+          allUsers: res.data.allUsers
+        });
       }).catch(function (err) {
         console.log(err);
       });
@@ -12158,12 +12161,20 @@ var App = function (_React$Component) {
   }, {
     key: "componentWillMount",
     value: function componentWillMount() {
-      this.getUser();
+      this.getUsersOnLoad();
     }
   }, {
     key: "setUser",
-    value: function setUser(user) {
-      this.setState({ currentUser: user });
+    value: function setUser(data) {
+      this.setState({ currentUser: data });
+      var self = this;
+      axios.get("/auth/getUsers").then(function (res) {
+        self.setState({
+          allUsers: res.data.allUsers
+        });
+      }).catch(function (err) {
+        console.log(err);
+      });
     }
   }, {
     key: "logout",
@@ -26700,7 +26711,7 @@ var NavBar = function (_React$Component) {
           _react2.default.createElement(
             "p",
             { className: "navbar-text userp" },
-            this.props.user
+            this.props.user.username
           ),
           _react2.default.createElement(
             "li",
@@ -28160,7 +28171,7 @@ var Login = function (_React$Component) {
       var self = this;
       axios.post("/auth/login", user).then(function (res) {
         alert("Welcome " + res.data.username + "!");
-        self.props.setUser(res.data.username);
+        self.props.setUser(res.data);
         self.setState({
           currentUser: { password: "", username: "" },
           redirect: true
@@ -28312,7 +28323,7 @@ var Mentee = function (_React$Component) {
           "h1",
           { className: "text-center" },
           "Welcome ",
-          this.props.user,
+          this.props.user.username,
           "!"
         ),
         _react2.default.createElement(

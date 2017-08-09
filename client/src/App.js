@@ -18,20 +18,23 @@ class App extends React.Component {
     super(props);
     this.state = {
       currentUser: null,
-      userId: null
+      allUsers: null
     };
-    this.getUser = this.getUser.bind(this);
+    this.getUsersOnLoad = this.getUsersOnLoad.bind(this);
     this.setUser = this.setUser.bind(this);
     this.logout = this.logout.bind(this);
   }
 
-  getUser() {
+  getUsersOnLoad() {
     let self = this;
     axios
-      .get("/auth/currentUser")
+      .get("/auth/getUsers")
       .then(function(res) {
-        alert(`Welcome Back ${res.data.username}!`);
-        self.setState({ currentUser: res.data.username, userId: res.data._id });
+        alert(`Welcome Back ${res.data.currentUser.username}!`);
+        self.setState({
+          currentUser: res.data.currentUser,
+          allUsers: res.data.allUsers
+        });
       })
       .catch(function(err) {
         console.log(err);
@@ -39,11 +42,22 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.getUser();
+    this.getUsersOnLoad();
   }
 
-  setUser(user) {
-    this.setState({ currentUser: user });
+  setUser(data) {
+    this.setState({ currentUser: data });
+    let self = this;
+    axios
+      .get("/auth/getUsers")
+      .then(function(res) {
+        self.setState({
+          allUsers: res.data.allUsers
+        });
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   }
 
   logout() {

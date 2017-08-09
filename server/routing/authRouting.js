@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("../models/Passport");
 var User = require("../models/UserModel");
+var Meeting = require("../models/MeetingModel");
 
 var routeHandler = function(res) {
   return function(err, data) {
@@ -73,16 +74,35 @@ router.post("/login", passport.authenticate("local"), function(req, res) {
 });
 
 //* 3 - Check for a Logged In User
-router.get("/currentuser", ensureAuthenticated, function(req, res) {
+router.get("/getUsers", ensureAuthenticated, function(req, res) {
   if (req.user) {
-    res.send(req.user);
+    let temp = {};
+    temp.currentUser = req.user;
+    User.find(function(err, data) {
+      if (err) {
+        return err;
+      }
+      temp.allUsers = data;
+      res.send(temp);
+    });
   } else {
     res.send("No Current User");
   }
 });
 
-router.get("/users", ensureAuthenticated, function(req, res) {
-  User.find(routeHandler(res));
+router.get("/meetings", function(req, res) {
+  Meeting.find(routeHandler(res));
+});
+
+router.get("/meetings/:userId", function(req, res) {
+  User.findById(req.params.userId)
+    .populate("meetings")
+    .exec(function(err, data) {
+      if (err) {
+        return err;
+      }
+      res.send(data);
+    });
 });
 
 //* 4 - Logout Users

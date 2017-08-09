@@ -10,7 +10,7 @@ class Mentee extends React.Component {
     return (
       <div>
         <h1 className="text-center">
-          Welcome {this.props.user}!
+          Welcome {this.props.user.username}!
         </h1>
         <div className="col-lg-6 text-center">
           <h2 className="">Book a Session</h2>

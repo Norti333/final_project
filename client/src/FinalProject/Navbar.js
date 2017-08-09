@@ -11,7 +11,7 @@ class NavBar extends React.Component {
       return (
         <ul className="nav navbar-nav navbar-right">
           <p className="navbar-text userp">
-            {this.props.user}
+            {this.props.user.username}
           </p>
           <li className="navbar-text">
             <a onClick={this.props.logout}>

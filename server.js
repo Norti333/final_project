@@ -152,9 +152,7 @@ app.delete("/deletemeeting/:meetingId", function(req, res) {
         return err;
       }
       let index1 = data.meetings.indexOf(meeting._id);
-      console.log(data.meetings);
       data.meetings.splice(index1, 1);
-      console.log(data.meetings);
       data.save();
       User.findById(meeting.mentorId, function(err, data) {
         if (err) {
