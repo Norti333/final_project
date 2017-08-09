@@ -83,7 +83,7 @@ class Register extends React.Component {
       return (
        <div> 
             <input
-              type="name"
+              type="text"
               className="form-control"
               id="name"
               placeholder="Name"
@@ -103,7 +103,7 @@ class Register extends React.Component {
                 })}
             />
             <input
-              type="bio"
+              type="text"
               className="form-control"
               id="bio"
               placeholder="Bio"
@@ -123,7 +123,7 @@ class Register extends React.Component {
                 })}
             />
             <input
-              type="profilePic"
+              type="text"
               className="form-control"
               id="profilePic"
               placeholder="Profile Pic url"
@@ -154,7 +154,10 @@ class Register extends React.Component {
       return <Redirect to="/" />;
     } else {
       return (
-        <form action="#" id="getRegisterForm" onSubmit={this.handleSubmit}>
+        
+        
+          
+        <form action="#" id="getRegisterForm" onSubmit={this.handleSubmit} className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
           <h3>Register</h3>
           <div>
             <input

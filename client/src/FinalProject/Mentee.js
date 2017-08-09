@@ -23,7 +23,7 @@ renderUserName(){
           <h2 className="">Book a Session</h2>
              <Link to="/mentee/menteebooking">
             <button type="button" className="btn btn-default">
-              MenteeBooking
+              Mentee Booking
             </button>
           </Link>
         </div>
@@ -31,7 +31,7 @@ renderUserName(){
           <h2 className="">Start a Session</h2>
           <Link to="/Mentee/MenteeSession">
             <button type="button" className="btn btn-default">
-              MenteeSession
+              Mentee Session
             </button>
           </Link>
         </div>

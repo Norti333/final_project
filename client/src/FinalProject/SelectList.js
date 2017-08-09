@@ -8,13 +8,14 @@ const SelectList = (props) => {
             item={item} />)
     return (
         <div>
-            <select onChange={props.change}>
+            <select onChange={props.change}  className="form-control dropdown">
                 <option disabled selected value>Please select a profession</option>
                 {boxes}
             </select>
         </div>
     );
 };
+
 
 export default SelectList;
 

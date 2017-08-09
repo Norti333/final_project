@@ -1500,7 +1500,7 @@ nav li {
 		}
 
 .btn {
-	letter-spacing: normal;
+	letter-spacing: 2px;
 }
 .pick-mentor{
 	float: right;
@@ -1528,6 +1528,16 @@ nav li {
 	z-index: 100;
 	border: 3px solid white;
 	border-radius: 3px;
+}
+
+input{
+	margin-bottom: 10px;
+	font-weight: initial;
+}
+.dropdown select {
+	  background: url("https://cdn3.iconfinder.com/data/icons/mobile-friendly-ui/100/arrow_drop_down-128.png") no-repeat;       
+      background-position: 82px 7px;           
+      width: 100px;     
 }
 .media{
 	    box-shadow: 1px -1px 7px black;

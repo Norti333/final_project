@@ -11721,7 +11721,7 @@ var SelectList = function SelectList(props) {
         null,
         _react2.default.createElement(
             "select",
-            { onChange: props.change },
+            { onChange: props.change, className: "form-control dropdown" },
             _react2.default.createElement(
                 "option",
                 { disabled: true, selected: true, value: true },
@@ -27993,7 +27993,7 @@ var Register = function (_React$Component) {
           "div",
           null,
           _react2.default.createElement("input", {
-            type: "name",
+            type: "text",
             className: "form-control",
             id: "name",
             placeholder: "Name",
@@ -28014,7 +28014,7 @@ var Register = function (_React$Component) {
             }
           }),
           _react2.default.createElement("input", {
-            type: "bio",
+            type: "text",
             className: "form-control",
             id: "bio",
             placeholder: "Bio",
@@ -28035,7 +28035,7 @@ var Register = function (_React$Component) {
             }
           }),
           _react2.default.createElement("input", {
-            type: "profilePic",
+            type: "text",
             className: "form-control",
             id: "profilePic",
             placeholder: "Profile Pic url",
@@ -28070,7 +28070,7 @@ var Register = function (_React$Component) {
       } else {
         return _react2.default.createElement(
           "form",
-          { action: "#", id: "getRegisterForm", onSubmit: this.handleSubmit },
+          { action: "#", id: "getRegisterForm", onSubmit: this.handleSubmit, className: "col-xs-7 col-sm-7 col-md-7 col-lg-7" },
           _react2.default.createElement(
             "h3",
             null,
@@ -29143,7 +29143,7 @@ var Login = function (_React$Component) {
       } else {
         return _react2.default.createElement(
           "form",
-          { action: "#", id: "getRegisterForm", onSubmit: this.handleSubmit },
+          { action: "#", id: "getRegisterForm", className: "col-xs-7 col-sm-7 col-md-7 col-lg-7", onSubmit: this.handleSubmit },
           _react2.default.createElement(
             "h3",
             null,
@@ -29693,7 +29693,7 @@ var Mentee = function (_React$Component) {
             _react2.default.createElement(
               "button",
               { type: "button", className: "btn btn-default" },
-              "MenteeBooking"
+              "Mentee Booking"
             )
           )
         ),
@@ -29711,7 +29711,7 @@ var Mentee = function (_React$Component) {
             _react2.default.createElement(
               "button",
               { type: "button", className: "btn btn-default" },
-              "MenteeSession"
+              "Mentee Session"
             )
           )
         )

@@ -33,6 +33,7 @@ class Login extends React.Component {
       })
       .catch(function(error) {});
   }
+    
 
   render() {
     let redirect = this.state.redirect;
@@ -40,7 +41,7 @@ class Login extends React.Component {
       return <Redirect to="/" />;
     } else {
       return (
-        <form action="#" id="getRegisterForm" onSubmit={this.handleSubmit}>
+        <form action="#" id="getRegisterForm"  className="col-xs-7 col-sm-7 col-md-7 col-lg-7" onSubmit={this.handleSubmit}>
           <h3>Login</h3>
           <div >
             <input
