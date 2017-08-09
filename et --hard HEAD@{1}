@@ -1,0 +1,34 @@
+[33mfa92970[m HEAD@{0}: commit: do u even
+[33m7947a88[m HEAD@{1}: commit: server
+[33m808490e[m HEAD@{2}: commit: server code
+[33m0c0f3e3[m HEAD@{3}: checkout: moving from mosh3 to mosh2
+[33m09f6956[m HEAD@{4}: commit: dist
+[33m6324c55[m HEAD@{5}: checkout: moving from mosh2 to mosh3
+[33m0c0f3e3[m HEAD@{6}: commit: mosh2
+[33mcecb839[m HEAD@{7}: checkout: moving from master to mosh2
+[33mcecb839[m HEAD@{8}: commit: mvp done
+[33m98f11ca[m HEAD@{9}: commit: mvp
+[33m8502128[m HEAD@{10}: commit: mvp
+[33mcea2ab6[m HEAD@{11}: commit: mvp
+[33mc7827d3[m HEAD@{12}: commit: mvp finish
+[33m1f22fc0[m HEAD@{13}: commit: more disconnect
+[33md0f0465[m HEAD@{14}: commit: disconnect video/audio
+[33m554e334[m HEAD@{15}: commit: mvp final
+[33m8b77072[m HEAD@{16}: pull origin master: Fast-forward
+[33mf89d7f7[m HEAD@{17}: checkout: moving from mosh to master
+[33m0807196[m HEAD@{18}: commit: mvp
+[33m11c73ea[m HEAD@{19}: commit: navbar
+[33mf89d7f7[m HEAD@{20}: checkout: moving from master to mosh
+[33mf89d7f7[m HEAD@{21}: checkout: moving from mosh to master
+[33mf89d7f7[m HEAD@{22}: checkout: moving from mosh to mosh
+[33mf89d7f7[m HEAD@{23}: pull origin master: Fast-forward
+[33mea4e1fb[m HEAD@{24}: checkout: moving from master to mosh
+[33mf89d7f7[m HEAD@{25}: commit: small changes
+[33md583d4d[m HEAD@{26}: pull origin master: Fast-forward
+[33m9467d57[m HEAD@{27}: checkout: moving from mosh to master
+[33mea4e1fb[m HEAD@{28}: checkout: moving from master to mosh
+[33m9467d57[m HEAD@{29}: checkout: moving from mosh to master
+[33mea4e1fb[m HEAD@{30}: commit: small changes
+[33m9467d57[m HEAD@{31}: checkout: moving from master to mosh
+[33m9467d57[m HEAD@{32}: commit: final project init.
+[33m1d5a392[m HEAD@{33}: commit (initial): final project init
