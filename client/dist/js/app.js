@@ -27058,6 +27058,10 @@ var _cta = __webpack_require__(243);
 
 var _cta2 = _interopRequireDefault(_cta);
 
+var _Footer = __webpack_require__(276);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27088,7 +27092,8 @@ var FinalProject = function (_React$Component) {
           _react2.default.createElement(_banner2.default, null),
           _react2.default.createElement(_items2.default, null),
           _react2.default.createElement(_cta2.default, null)
-        )
+        ),
+        _react2.default.createElement(_Footer2.default, null)
       );
     }
   }]);
@@ -29615,6 +29620,143 @@ var MenteeBooking = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = MenteeBooking;
+
+/***/ }),
+/* 276 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(8);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Footer = function (_React$Component) {
+    _inherits(Footer, _React$Component);
+
+    function Footer(props) {
+        _classCallCheck(this, Footer);
+
+        return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this, props));
+    }
+
+    _createClass(Footer, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "footer",
+                { id: "footer" },
+                _react2.default.createElement(
+                    "ul",
+                    { className: "icons" },
+                    _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                            "a",
+                            { href: "https://twitter.com/", className: "icon fa-twitter" },
+                            _react2.default.createElement(
+                                "span",
+                                { "class": "label" },
+                                "Twitter"
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                            "a",
+                            { href: "https://www.facebook.com/", className: "icon fa-facebook" },
+                            _react2.default.createElement(
+                                "span",
+                                { "class": "label" },
+                                "Facebook"
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                            "a",
+                            { href: "https://www.instagram.com/", className: "icon fa-instagram" },
+                            _react2.default.createElement(
+                                "span",
+                                { "class": "label" },
+                                "Instagram"
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                            "a",
+                            { href: "https://www.linkedin.com/feed/", className: "icon fa-linkedin" },
+                            _react2.default.createElement(
+                                "span",
+                                { "class": "label" },
+                                "LinkedIn"
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                            "a",
+                            { href: "https://mail.google.com/", className: "icon fa-envelope" },
+                            _react2.default.createElement(
+                                "span",
+                                { "class": "label" },
+                                "Email"
+                            )
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    "p",
+                    { "class": "copyright" },
+                    "\xA9 Untitled. Design: ",
+                    _react2.default.createElement(
+                        "a",
+                        { href: "https://templated.co" },
+                        "TEMPLATED"
+                    ),
+                    ". Images: ",
+                    _react2.default.createElement(
+                        "a",
+                        { href: "https://unsplash.com" },
+                        "Unsplash"
+                    ),
+                    "."
+                )
+            );
+        }
+    }]);
+
+    return Footer;
+}(_react2.default.Component);
+
+exports.default = Footer;
 
 /***/ })
 /******/ ]);
