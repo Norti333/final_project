@@ -47,17 +47,18 @@ if(!this.state.dates){
 }
   render() {
     return (
-      <div>
-        <h1>Upcoming Sessions:</h1>
-        {this.showMeetings()}
-        <Link to="/mentee">
-          <button type="button" className="btn btn-default">
-            Go Back.
-          </button>
-        </Link>
-        <hr/>
+      <div>       
+      <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
      <ChatRoom />
       </div>
+      <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <h1>Upcoming Sessions:</h1>
+        {this.showMeetings()}
+        </div>
+        <hr/>
+
+            </div>
+
     );
   }
 }
