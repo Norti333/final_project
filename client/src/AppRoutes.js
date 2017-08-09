@@ -13,12 +13,42 @@ const AppRoutes = props => {
   return (
     <div className="container-fluid">
       <Switch>
-        <Route name="home" exact path="/" render={routesProps => <FinalProject {...routesProps} {...props} />} />
-        <Route name="register" exact path="/register" render={routesProps => <Register {...routesProps} {...props} />} />
-        <Route name="login" exact path="/login" render={routesProps => <Login {...routesProps} {...props} />} />
-        <Route name="MenteeBooking" exact path="/mentee/menteebooking" render={routesProps => <MenteeBooking {...routesProps} {...props} />} />
-        <Route name="mentor" exact path="/mentor" render={routesProps => <Mentor {...routesProps} {...props} />} />
-        <Route name="ChooseMentor" exact path="/chooseMentor" render={routesProps => <ChooseMentor {...routesProps} {...props} />} />
+        <Route
+          name="home"
+          exact
+          path="/"
+          render={routesProps => <FinalProject {...routesProps} {...props} />}
+        />
+        <Route
+          name="register"
+          exact
+          path="/register"
+          render={routesProps => <Register {...routesProps} {...props} />}
+        />
+        <Route
+          name="login"
+          exact
+          path="/login"
+          render={routesProps => <Login {...routesProps} {...props} />}
+        />
+        <Route
+          name="MenteeBooking"
+          exact
+          path="/mentee/menteebooking"
+          render={routesProps => <MenteeBooking {...routesProps} {...props} />}
+        />
+        <Route
+          name="mentor"
+          exact
+          path="/mentor"
+          render={routesProps => <Mentor {...routesProps} {...props} />}
+        />
+        <Route
+          name="ChooseMentor"
+          exact
+          path="/chooseMentor"
+          render={routesProps => <ChooseMentor {...routesProps} {...props} />}
+        />
         <Route
           name="mentee"
           exact
@@ -29,7 +59,7 @@ const AppRoutes = props => {
           name="menteesession"
           exact
           path="/Mentee/MenteeSession"
-          component={MenteeSession}
+          render={routesProps => <MenteeSession {...routesProps} {...props} />}
         />
       </Switch>
     </div>

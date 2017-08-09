@@ -12301,7 +12301,7 @@ var App = function (_React$Component) {
 
     _this.state = {
       currentUser: null,
-      allUsers: null
+      mentors: null
     };
     _this.getUsersOnLoad = _this.getUsersOnLoad.bind(_this);
     _this.setUser = _this.setUser.bind(_this);
@@ -12315,9 +12315,16 @@ var App = function (_React$Component) {
       var self = this;
       axios.get("/user").then(function (res) {
         alert("Welcome Back " + res.data.currentUser.username + "!");
+        var allUsers = res.data.allUsers;
+        var mentorArr = [];
+        for (var i = 0; i < allUsers.length; i++) {
+          if (allUsers[i].mentor) {
+            mentorArr.push(allUsers[i]);
+          }
+        }
         self.setState({
           currentUser: res.data.currentUser,
-          allUsers: res.data.allUsers
+          mentors: mentorArr
         });
       }).catch(function (err) {
         console.log(err);
@@ -12334,8 +12341,15 @@ var App = function (_React$Component) {
       this.setState({ currentUser: data });
       var self = this;
       axios.get("/user").then(function (res) {
+        var allUsers = res.data.allUsers;
+        var mentorArr = [];
+        for (var i = 0; i < allUsers.length; i++) {
+          if (allUsers[i].mentor) {
+            mentorArr.push(allUsers[i]);
+          }
+        }
         self.setState({
-          allUsers: res.data.allUsers
+          mentors: mentorArr
         });
       }).catch(function (err) {
         console.log(err);
@@ -12367,7 +12381,11 @@ var App = function (_React$Component) {
           _react2.default.createElement(
             "div",
             null,
-            _react2.default.createElement(_AppRoutes2.default, { setUser: this.setUser, user: this.state.currentUser })
+            _react2.default.createElement(_AppRoutes2.default, {
+              setUser: this.setUser,
+              user: this.state.currentUser,
+              mentors: this.state.mentors
+            })
           )
         )
       );
@@ -27038,24 +27056,54 @@ var AppRoutes = function AppRoutes(props) {
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
-      _react2.default.createElement(_reactRouterDom.Route, { name: "home", exact: true, path: "/", render: function render(routesProps) {
+      _react2.default.createElement(_reactRouterDom.Route, {
+        name: "home",
+        exact: true,
+        path: "/",
+        render: function render(routesProps) {
           return _react2.default.createElement(_FinalProject2.default, _extends({}, routesProps, props));
-        } }),
-      _react2.default.createElement(_reactRouterDom.Route, { name: "register", exact: true, path: "/register", render: function render(routesProps) {
+        }
+      }),
+      _react2.default.createElement(_reactRouterDom.Route, {
+        name: "register",
+        exact: true,
+        path: "/register",
+        render: function render(routesProps) {
           return _react2.default.createElement(_Register2.default, _extends({}, routesProps, props));
-        } }),
-      _react2.default.createElement(_reactRouterDom.Route, { name: "login", exact: true, path: "/login", render: function render(routesProps) {
+        }
+      }),
+      _react2.default.createElement(_reactRouterDom.Route, {
+        name: "login",
+        exact: true,
+        path: "/login",
+        render: function render(routesProps) {
           return _react2.default.createElement(_Login2.default, _extends({}, routesProps, props));
-        } }),
-      _react2.default.createElement(_reactRouterDom.Route, { name: "MenteeBooking", exact: true, path: "/mentee/menteebooking", render: function render(routesProps) {
+        }
+      }),
+      _react2.default.createElement(_reactRouterDom.Route, {
+        name: "MenteeBooking",
+        exact: true,
+        path: "/mentee/menteebooking",
+        render: function render(routesProps) {
           return _react2.default.createElement(_MenteeBooking2.default, _extends({}, routesProps, props));
-        } }),
-      _react2.default.createElement(_reactRouterDom.Route, { name: "mentor", exact: true, path: "/mentor", render: function render(routesProps) {
+        }
+      }),
+      _react2.default.createElement(_reactRouterDom.Route, {
+        name: "mentor",
+        exact: true,
+        path: "/mentor",
+        render: function render(routesProps) {
           return _react2.default.createElement(_Mentor2.default, _extends({}, routesProps, props));
-        } }),
-      _react2.default.createElement(_reactRouterDom.Route, { name: "ChooseMentor", exact: true, path: "/chooseMentor", render: function render(routesProps) {
+        }
+      }),
+      _react2.default.createElement(_reactRouterDom.Route, {
+        name: "ChooseMentor",
+        exact: true,
+        path: "/chooseMentor",
+        render: function render(routesProps) {
           return _react2.default.createElement(_ChooseMentor2.default, _extends({}, routesProps, props));
-        } }),
+        }
+      }),
       _react2.default.createElement(_reactRouterDom.Route, {
         name: "mentee",
         exact: true,
@@ -27068,7 +27116,9 @@ var AppRoutes = function AppRoutes(props) {
         name: "menteesession",
         exact: true,
         path: "/Mentee/MenteeSession",
-        component: _MenteeSession2.default
+        render: function render(routesProps) {
+          return _react2.default.createElement(_MenteeSession2.default, _extends({}, routesProps, props));
+        }
       })
     )
   );
@@ -27726,7 +27776,7 @@ var Register = function (_React$Component) {
 
     _this.state = {
       currentUser: {
-        isMentor: false,
+        mentor: false,
         username: "",
         password: "",
         name: "",
@@ -27741,7 +27791,6 @@ var Register = function (_React$Component) {
     _this.handleInputChange = _this.handleInputChange.bind(_this);
     _this.registerMentor = _this.registerMentor.bind(_this);
     _this.handleProfessionChange = _this.handleProfessionChange.bind(_this);
-
     return _this;
   }
 
@@ -27752,7 +27801,7 @@ var Register = function (_React$Component) {
         currentUser: {
           username: this.state.currentUser.username,
           password: this.state.currentUser.password,
-          isMentor: this.state.currentUser.isMentor,
+          mentor: this.state.currentUser.mentor,
           name: this.state.currentUser.name,
           bio: this.state.currentUser.bio,
           profilePic: this.state.currentUser.profilePic,
@@ -27767,7 +27816,7 @@ var Register = function (_React$Component) {
         currentUser: {
           username: this.state.currentUser.username,
           password: this.state.currentUser.password,
-          isMentor: !this.state.currentUser.isMentor,
+          mentor: !this.state.currentUser.mentor,
           name: this.state.currentUser.name,
           bio: this.state.currentUser.bio,
           profilePic: this.state.currentUser.profilePic,
@@ -27795,7 +27844,7 @@ var Register = function (_React$Component) {
     value: function registerMentor() {
       var _this2 = this;
 
-      if (!this.state.currentUser.isMentor) {
+      if (!this.state.currentUser.mentor) {
         return false;
       } else {
         return _react2.default.createElement(
@@ -27813,6 +27862,7 @@ var Register = function (_React$Component) {
                 currentUser: {
                   username: _this2.state.currentUser.username,
                   password: _this2.state.currentUser.password,
+                  mentor: _this2.state.currentUser.mentor,
                   name: event.target.value,
                   bio: _this2.state.currentUser.bio,
                   profilePic: _this2.state.currentUser.profilePic,
@@ -27833,6 +27883,7 @@ var Register = function (_React$Component) {
                 currentUser: {
                   username: _this2.state.currentUser.username,
                   password: _this2.state.currentUser.password,
+                  mentor: _this2.state.currentUser.mentor,
                   name: _this2.state.currentUser.name,
                   bio: event.target.value,
                   profilePic: _this2.state.currentUser.profilePic,
@@ -27853,6 +27904,7 @@ var Register = function (_React$Component) {
                 currentUser: {
                   username: _this2.state.currentUser.username,
                   password: _this2.state.currentUser.password,
+                  mentor: _this2.state.currentUser.mentor,
                   name: _this2.state.currentUser.name,
                   bio: _this2.state.currentUser.bio,
                   profilePic: event.target.value,
@@ -27861,7 +27913,10 @@ var Register = function (_React$Component) {
               });
             }
           }),
-          _react2.default.createElement(_SelectList2.default, { change: this.handleProfessionChange, Professions: this.state.Professions })
+          _react2.default.createElement(_SelectList2.default, {
+            change: this.handleProfessionChange,
+            Professions: this.state.Professions
+          })
         );
       }
     }
@@ -27884,7 +27939,7 @@ var Register = function (_React$Component) {
           ),
           _react2.default.createElement(
             "div",
-            { className: "input-group" },
+            null,
             _react2.default.createElement("input", {
               type: "text",
               className: "form-control",
@@ -27897,6 +27952,7 @@ var Register = function (_React$Component) {
                   currentUser: {
                     username: event.target.value,
                     password: _this3.state.currentUser.password,
+                    mentor: _this3.state.currentUser.mentor,
                     name: _this3.state.currentUser.name,
                     bio: _this3.state.currentUser.bio,
                     profilePic: _this3.state.currentUser.profilePic,
@@ -27917,6 +27973,7 @@ var Register = function (_React$Component) {
                   currentUser: {
                     username: _this3.state.currentUser.username,
                     password: event.target.value,
+                    mentor: _this3.state.currentUser.mentor,
                     name: _this3.state.currentUser.name,
                     bio: _this3.state.currentUser.bio,
                     profilePic: _this3.state.currentUser.profilePic,
@@ -27924,13 +27981,18 @@ var Register = function (_React$Component) {
                   }
                 });
               }
-
             }),
             _react2.default.createElement(
               "label",
               null,
-              "Want to be a Mentor ? ",
-              _react2.default.createElement("input", { name: "isMentor", type: "checkbox", checked: this.state.currentUser.isMentor, onChange: this.handleInputChange })
+              "Want to be a Mentor ?",
+              " ",
+              _react2.default.createElement("input", {
+                name: "mentor",
+                type: "checkbox",
+                checked: this.state.currentUser.mentor,
+                onChange: this.handleInputChange
+              })
             ),
             this.registerMentor(),
             _react2.default.createElement(
