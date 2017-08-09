@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 class MentorBoxes extends React.Component {
     render() {
         return (
             <div className="equalHMV eq col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div className="media">
-                  <button type="button" className="btn btn-success pick-mentor">Pick this Mentor</button>
+                <Link to='/mentee/meeting'>  <button type="button" className="btn btn-success pick-mentor">Pick this Mentor</button> </Link>
                     <div className="media-left">
                         <img src={this.props.item.img} alt={this.props.item.name} className="media-object" style={{ width: 60 }} /></div>
                     <div className="media-body">

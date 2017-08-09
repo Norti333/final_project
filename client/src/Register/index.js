@@ -140,6 +140,7 @@ class Register extends React.Component {
                 })}
             />
            <SelectList change={this.handleProfessionChange} Professions={this.state.Professions} />
+
 </div>
       )
     }
@@ -152,7 +153,7 @@ class Register extends React.Component {
       return (
         <form action="#" id="getRegisterForm" onSubmit={this.handleSubmit}>
           <h3>Register</h3>
-          <div className="input-group">
+          <div>
             <input
               type="text"
               className="form-control"
@@ -191,14 +192,12 @@ class Register extends React.Component {
                   }
                 })}             
 
-                
             />
-
            
      <label>Want to be a Mentor ? <input name="isMentor" type="checkbox" checked={this.state.currentUser.isMentor} onChange={this.handleInputChange} />
         </label>
         {this.registerMentor()}
-            <span className="input-group-btn">
+             <span className="input-group-btn">
               <button className="btn btn-default" type="submit">
                 Register!
               </button>

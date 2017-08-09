@@ -26923,6 +26923,10 @@ var _MenteeSession = __webpack_require__(274);
 
 var _MenteeSession2 = _interopRequireDefault(_MenteeSession);
 
+var _Meetings = __webpack_require__(269);
+
+var _Meetings2 = _interopRequireDefault(_Meetings);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AppRoutes = function AppRoutes(props) {
@@ -26950,20 +26954,13 @@ var AppRoutes = function AppRoutes(props) {
       _react2.default.createElement(_reactRouterDom.Route, { name: "ChooseMentor", exact: true, path: "/chooseMentor", render: function render(routesProps) {
           return _react2.default.createElement(_ChooseMentor2.default, _extends({}, routesProps, props));
         } }),
-      _react2.default.createElement(_reactRouterDom.Route, {
-        name: "mentee",
-        exact: true,
-        path: "/Mentee",
-        render: function render(routesProps) {
+      _react2.default.createElement(_reactRouterDom.Route, { name: "mentee", exact: true, path: "/Mentee", render: function render(routesProps) {
           return _react2.default.createElement(_Mentee2.default, _extends({}, routesProps, props));
-        }
-      }),
-      _react2.default.createElement(_reactRouterDom.Route, {
-        name: "menteesession",
-        exact: true,
-        path: "/Mentee/MenteeSession",
-        component: _MenteeSession2.default
-      })
+        } }),
+      _react2.default.createElement(_reactRouterDom.Route, { name: "menteesession", exact: true, path: "/Mentee/MenteeSession", component: _MenteeSession2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { name: "menteeMeetings", exact: true, path: "/mentee/meeting", render: function render(routesProps) {
+          return _react2.default.createElement(_Meetings2.default, _extends({}, routesProps, props));
+        } })
     )
   );
 };
@@ -27415,78 +27412,6 @@ var Items = function (_React$Component) {
                             )
                         )
                     )
-                ),
-                _react2.default.createElement(
-                    "article",
-                    { className: "item" },
-                    _react2.default.createElement(
-                        "header",
-                        null,
-                        _react2.default.createElement(
-                            _reactRouterDom.Link,
-                            { to: "#" },
-                            _react2.default.createElement("img", { src: "images/pic03.jpg", alt: "" })
-                        ),
-                        _react2.default.createElement(
-                            "h3",
-                            null,
-                            "Groups"
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "p",
-                        null,
-                        "If your team or group of two or more is looking for guidance and counsel on taking your knowledge or idea's to the next level, Oraculi mentors are here to help. "
-                    ),
-                    _react2.default.createElement(
-                        "ul",
-                        { className: "actions" },
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: "#", className: "button" },
-                                "More"
-                            )
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    "article",
-                    { className: "item" },
-                    _react2.default.createElement(
-                        "header",
-                        null,
-                        _react2.default.createElement(
-                            _reactRouterDom.Link,
-                            { to: "#" },
-                            _react2.default.createElement("img", { src: "images/pic04.jpg", alt: "" })
-                        ),
-                        _react2.default.createElement(
-                            "h3",
-                            null,
-                            "Sponsors"
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "p",
-                        null,
-                        "Your company can become the next Oraculi sponser and promote your brand on Oraculi's Website and at our Events, all while supporting the dreams of our Mentee's."
-                    ),
-                    _react2.default.createElement(
-                        "ul",
-                        { className: "actions" },
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: "#", className: "button" },
-                                "More"
-                            )
-                        )
-                    )
                 )
             );
         }
@@ -27778,7 +27703,7 @@ var Register = function (_React$Component) {
           ),
           _react2.default.createElement(
             "div",
-            { className: "input-group" },
+            null,
             _react2.default.createElement("input", {
               type: "text",
               className: "form-control",
@@ -28849,7 +28774,7 @@ var Login = function (_React$Component) {
           ),
           _react2.default.createElement(
             "div",
-            { className: "input-group" },
+            null,
             _react2.default.createElement("input", {
               type: "text",
               className: "form-control",
@@ -28884,7 +28809,7 @@ var Login = function (_React$Component) {
             }),
             _react2.default.createElement(
               "span",
-              { className: "input-group-btn" },
+              null,
               _react2.default.createElement(
                 "button",
                 { className: "btn btn-default", type: "submit" },
@@ -29370,6 +29295,8 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(8);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29397,9 +29324,15 @@ var MentorBoxes = function (_React$Component) {
                     "div",
                     { className: "media" },
                     _react2.default.createElement(
-                        "button",
-                        { type: "button", className: "btn btn-success pick-mentor" },
-                        "Pick this Mentor"
+                        _reactRouterDom.Link,
+                        { to: "/mentee/meeting" },
+                        "  ",
+                        _react2.default.createElement(
+                            "button",
+                            { type: "button", className: "btn btn-success pick-mentor" },
+                            "Pick this Mentor"
+                        ),
+                        " "
                     ),
                     _react2.default.createElement(
                         "div",

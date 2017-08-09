@@ -29,26 +29,6 @@ class Items extends React.Component {
                     <li><Link to= "#" className="button">More</Link></li>
                 </ul>
             </article>
-            <article className="item">
-                <header>
-                    <Link to= "#"><img src="images/pic03.jpg" alt="" /></Link>
-                    <h3>Groups</h3>
-                </header>
-                <p>If your team or group of two or more is looking for guidance and counsel on taking your knowledge or idea's to the next level, Oraculi mentors are here to help. </p>
-                <ul className="actions">
-                    <li><Link to= "#" className="button">More</Link></li>
-                </ul>
-            </article>
-            <article className="item">
-                <header>
-                    <Link to= "#"><img src="images/pic04.jpg" alt="" /></Link>
-                    <h3>Sponsors</h3>
-                </header>
-                <p>Your company can become the next Oraculi sponser and promote your brand on Oraculi's Website and at our Events, all while supporting the dreams of our Mentee's.</p>
-                <ul className="actions">
-                    <li><Link to= "#" className="button">More</Link></li>
-                </ul>
-            </article>
         </section>
         );
     }

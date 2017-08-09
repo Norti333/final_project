@@ -42,7 +42,7 @@ class Login extends React.Component {
       return (
         <form action="#" id="getRegisterForm" onSubmit={this.handleSubmit}>
           <h3>Login</h3>
-          <div className="input-group">
+          <div >
             <input
               type="text"
               className="form-control"
@@ -73,7 +73,7 @@ class Login extends React.Component {
                   }
                 })}
             />
-            <span className="input-group-btn">
+            <span >
               <button className="btn btn-default" type="submit">
                 Login!
               </button>
