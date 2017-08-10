@@ -68,7 +68,7 @@ class Register extends React.Component {
       .post("/user/register", user)
       .then(function(res) {
         alert(`Welcome ${res.data.username}!`);
-        self.props.setUser(res.data.username);
+        self.props.setUser(res.data);
         self.setState({
           currentUser: { password: "", username: "" },
           redirect: true
