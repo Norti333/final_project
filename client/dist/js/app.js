@@ -43214,7 +43214,7 @@ exports.default = Banner;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -43234,97 +43234,87 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Items = function (_React$Component) {
-    _inherits(Items, _React$Component);
+  _inherits(Items, _React$Component);
 
-    function Items(props) {
-        _classCallCheck(this, Items);
+  function Items(props) {
+    _classCallCheck(this, Items);
 
-        return _possibleConstructorReturn(this, (Items.__proto__ || Object.getPrototypeOf(Items)).call(this, props));
+    return _possibleConstructorReturn(this, (Items.__proto__ || Object.getPrototypeOf(Items)).call(this, props));
+  }
+
+  _createClass(Items, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "section",
+        { className: "main items" },
+        _react2.default.createElement(
+          "article",
+          { className: "item" },
+          _react2.default.createElement(
+            "header",
+            null,
+            _react2.default.createElement(
+              "h3",
+              null,
+              "Mentee"
+            )
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "Ready to take action on the dream idea or profession that has been in your mind for quite some time? Join today and within a week you will have your first meeting with a mentor that suits your needs."
+          ),
+          _react2.default.createElement(
+            "ul",
+            { className: "actions" },
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: "#", className: "button" },
+                "More"
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "article",
+          { className: "item" },
+          _react2.default.createElement(
+            "header",
+            null,
+            _react2.default.createElement(
+              "h3",
+              null,
+              "Mentor"
+            )
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "Do you think you have the knowledge and experiance to mentor pupils of all ages? The Oraculi mentorship may be the next stop in your career to give back to others while creating your own hours and working remotely."
+          ),
+          _react2.default.createElement(
+            "ul",
+            { className: "actions" },
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: "/mentor", className: "button" },
+                "More"
+              )
+            )
+          )
+        )
+      );
     }
+  }]);
 
-    _createClass(Items, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "section",
-                { className: "main items" },
-                _react2.default.createElement(
-                    "article",
-                    { className: "item" },
-                    _react2.default.createElement(
-                        "header",
-                        null,
-                        _react2.default.createElement(
-                            _reactRouterDom.Link,
-                            { to: "#" },
-                            _react2.default.createElement("img", { src: "/images/pic01.jpg", alt: "" })
-                        ),
-                        _react2.default.createElement(
-                            "h3",
-                            null,
-                            "Mentee"
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "p",
-                        null,
-                        "Ready to take action on the dream idea or profession that has been in your mind for quite some time? Join today and within a week you will have your first meeting with a mentor that suits your needs."
-                    ),
-                    _react2.default.createElement(
-                        "ul",
-                        { className: "actions" },
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: "#", className: "button" },
-                                "More"
-                            )
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    "article",
-                    { className: "item" },
-                    _react2.default.createElement(
-                        "header",
-                        null,
-                        _react2.default.createElement(
-                            _reactRouterDom.Link,
-                            { to: "#" },
-                            _react2.default.createElement("img", { src: "./images/pic02.jpg", alt: "" })
-                        ),
-                        _react2.default.createElement(
-                            "h3",
-                            null,
-                            "Mentor"
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "p",
-                        null,
-                        "Do you think you have the knowledge and experiance to mentor pupils of all ages? The Oraculi mentorship may be the next stop in your career to give back to others while creating your own hours and working remotely."
-                    ),
-                    _react2.default.createElement(
-                        "ul",
-                        { className: "actions" },
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: "/mentor", className: "button" },
-                                "More"
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Items;
+  return Items;
 }(_react2.default.Component);
 
 exports.default = Items;
