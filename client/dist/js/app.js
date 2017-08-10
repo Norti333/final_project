@@ -12334,10 +12334,10 @@ var ChatRoom = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         "div",
-        { className: "row" },
+        null,
         _react2.default.createElement(
           "div",
-          { className: "col-lg-6" },
+          null,
           _react2.default.createElement(_form2.default, { connectToSession: this.connectToSession })
         ),
         _react2.default.createElement(
@@ -29596,13 +29596,13 @@ var Form = function (_React$Component) {
             { className: "" },
             _react2.default.createElement(
               "button",
-              { className: "btn btn-primary btn-lg", type: "submit" },
+              { className: "btn btn-primary", type: "submit" },
               "Create!"
             ),
             _react2.default.createElement(
               "button",
               {
-                className: "btn btn-primary btn-lg",
+                className: "btn btn-primary",
                 onClick: this.handleSubmitJoin
               },
               "Join!"

@@ -64,11 +64,11 @@ class Form extends React.Component {
             onChange={event => this.setState({ name: event.target.value })}
           />
           <div className="">
-            <button className="btn btn-primary btn-lg" type="submit">
+            <button className="btn btn-primary" type="submit">
               Create!
             </button>
             <button
-              className="btn btn-primary btn-lg"
+              className="btn btn-primary"
               onClick={this.handleSubmitJoin}
             >
               Join!
