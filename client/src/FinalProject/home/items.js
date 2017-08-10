@@ -26,7 +26,7 @@ class Items extends React.Component {
                 </header>
                 <p>Do you think you have the knowledge and experiance to mentor pupils of all ages? The Oraculi mentorship may be the next stop in your career to give back to others while creating your own hours and working remotely.</p>
                 <ul className="actions">
-                    <li><Link to= "#" className="button">More</Link></li>
+                    <li><Link to= "/mentor" className="button">More</Link></li>
                 </ul>
             </article>
         </section>

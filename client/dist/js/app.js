@@ -27642,7 +27642,7 @@ var Items = function (_React$Component) {
                             null,
                             _react2.default.createElement(
                                 _reactRouterDom.Link,
-                                { to: "#", className: "button" },
+                                { to: "/mentor", className: "button" },
                                 "More"
                             )
                         )
